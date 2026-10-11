@@ -28,7 +28,10 @@ env:
 jobs:
   ipa:
     name: Unsigned IPA
-    runs-on: macos-15
+    # macOS 26 carries Xcode 26.x, which is what the Godot 4.7 templates need.
+    # The macos-15 image still defaults to Xcode 16.4 / iOS 18.5 and fails at
+    # link time, so the SDK is asserted in the first step.
+    runs-on: macos-26
     timeout-minutes: 150
 
     steps:
@@ -40,7 +43,19 @@ jobs:
           set -euo pipefail
           sw_vers
           xcodebuild -version
-          xcrun --sdk iphoneos --show-sdk-version
+          SDK="$(xcrun --sdk iphoneos --show-sdk-version)"
+          echo "iphoneos SDK: $SDK"
+          # libgodot.a references CADynamicRange* and MTLTensorDomain, which the
+          # iOS 18 SDK does not export - the link dies in a wall of undefined
+          # symbols. Fail on the missing SDK instead, with what is installed.
+          case "$SDK" in
+            2[6-9].*|3[0-9].*) ;;
+            *)
+              echo "::error::the Godot 4.7 templates need an iOS 26+ SDK, this runner has $SDK"
+              ls -d /Applications/Xcode*.app 2>/dev/null || true
+              exit 1
+              ;;
+          esac
 
       - name: Cache Godot editor and iOS export template
         uses: actions/cache@v4

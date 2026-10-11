@@ -92,7 +92,9 @@ Details that matter on a phone:
 
 ## How the build works
 
-`.github/workflows/ios.yml` runs on `macos-15`:
+`.github/workflows/ios.yml` runs on `macos-26` (Xcode 26, iOS 26 SDK - the
+Godot 4.7 iOS templates reference `CADynamicRange*` and `MTLTensorDomain`, so an
+older Xcode stops at the link step):
 
 1. Install Godot 4.7.2 (universal editor) and the matching `ios.zip` export
    template, both cached between runs.
@@ -107,6 +109,9 @@ Details that matter on a phone:
    packed game data and the touch-control script are actually inside it, then
    upload it as an artifact. Pushing a `v*` tag publishes it as a GitHub
    Release.
+
+The first step asserts the runner really has an iOS 26+ SDK, so a future runner
+change fails with that message instead of a wall of undefined symbols.
 
 Notes about the preset (`export_presets.cfg`, preset `iOS`):
 
