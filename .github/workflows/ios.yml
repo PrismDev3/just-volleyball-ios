@@ -264,9 +264,37 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
+          cat > "$RUNNER_TEMP/notes.md" <<'NOTES'
+          Unsigned iOS build of Just Volleyball, built on GitHub's runners. No Mac
+          and no Apple Developer account needed to get the file - your Apple ID
+          signs it at install time.
+
+          **Install**
+
+          1. Download `volleyball-unsigned.ipa` below.
+          2. Sideload it with [Sideloadly](https://sideloadly.io/) (Windows/macOS)
+             or [AltStore](https://altstore.io/).
+          3. On the phone: **Settings -> General -> VPN & Device Management** and
+             trust your developer certificate.
+          4. A free Apple ID signs for 7 days; sideload again to renew.
+
+          **Check the download** - compare the file against
+          `volleyball-unsigned.ipa.sha256` sitting next to it
+          (`certutil -hashfile volleyball-unsigned.ipa SHA256` on Windows).
+
+          **Requirements** - iPhone or iPad on iOS 15+, A12 or newer (iPhone XS/XR
+          and later), landscape only.
+
+          **Controls** - thumbstick bottom left; hit / jump / set / dive / strafe
+          in the right thumb cluster; drag anywhere else to aim and look; pause,
+          scoreboard, camera, zoom and aim-recentre in the top right.
+          NOTES
           gh release create "$GITHUB_REF_NAME" \
             build/volleyball-unsigned.ipa build/volleyball-unsigned.ipa.sha256 \
             --title "Just Volleyball iOS $GITHUB_REF_NAME" \
-            --notes "Unsigned iOS build. Install with Sideloadly or AltStore using your own Apple ID; the app is re-signed on your side." \
-            || gh release upload "$GITHUB_REF_NAME" \
-              build/volleyball-unsigned.ipa build/volleyball-unsigned.ipa.sha256 --clobber
+            --notes-file "$RUNNER_TEMP/notes.md" \
+            || {
+              gh release upload "$GITHUB_REF_NAME" \
+                build/volleyball-unsigned.ipa build/volleyball-unsigned.ipa.sha256 --clobber
+              gh release edit "$GITHUB_REF_NAME" --notes-file "$RUNNER_TEMP/notes.md"
+            }
