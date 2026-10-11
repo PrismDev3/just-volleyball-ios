@@ -29,10 +29,16 @@ const LAYER: = 60
 ## Layout as multiples of viewport height - [code]x[/code] is how far in from the
 ## right edge a control sits, [code]y[/code] how far up from the bottom. Sizing
 ## off the short edge keeps the pad right on anything from 16:9 to 21:9 and in
-## both orientations.
+## both orientations, and the safe rect keeps it clear of a notch or the home
+## indicator.
 const STICK_AT: = Vector2(0.250, 0.240)
 const STICK_R: = 0.118
 const STICK_GRAB: = 1.32
+## Smallest walk between the stick and the safe-area edge.
+const STICK_GAP: = 0.030
+## A cutout can never claim more than this much of an edge, however the display
+## server mangles its units.
+const MAX_INSET: = 0.18
 const KNOB_R: = 0.054
 const TOP_SAFE: = 0.135
 const UTIL_R: = 0.036
@@ -89,6 +95,9 @@ var _buttons: Array = []
 var _utils: Array = []
 var _utility_rect: = Rect2()
 var _size: = Vector2(1920.0, 1080.0)
+## Viewport minus any notch, rounded corner or home indicator; the whole
+## viewport on anything without one.
+var _safe: = Rect2()
 var _fade: Tween
 
 var _rig: CameraRig = null
@@ -230,6 +239,36 @@ func _pointer_drives_pad() -> bool:
 	return not (DisplayServer.is_touchscreen_available() or OS.has_feature("mobile"))
 
 
+## The part of the viewport that is not under a cutout. [method
+## DisplayServer.get_display_safe_area] reports physical pixels while the
+## viewport is in canvas units, so the insets are turned into fractions of the
+## screen first - that is unit-free and cannot mismatch. A server that reports
+## nothing usable (or nonsense) falls back to the full viewport.
+func _safe_rect() -> Rect2:
+	var full: = Rect2(Vector2.ZERO, _size)
+	# Desktop window managers report their own work area here - a taskbar, a dock
+	# or a title bar - which has nothing to do with the app's layout. Only phones
+	# and tablets have cutouts to dodge.
+	if not OS.has_feature("mobile"):
+		return full
+	var window: = Vector2(get_window().size)
+	if window.x <= 1.0 or window.y <= 1.0:
+		return full
+	var area: = Rect2(DisplayServer.get_display_safe_area())
+	if area.size.x <= 1.0 or area.size.y <= 1.0:
+		return full
+	if area.size.x > window.x or area.size.y > window.y:
+		return full
+	if area.size.x >= window.x - 1.0 and area.size.y >= window.y - 1.0:
+		return full
+	var l: = clampf(area.position.x / window.x, 0.0, MAX_INSET)
+	var t: = clampf(area.position.y / window.y, 0.0, MAX_INSET)
+	var r: = clampf((window.x - area.end.x) / window.x, 0.0, MAX_INSET)
+	var b: = clampf((window.y - area.end.y) / window.y, 0.0, MAX_INSET)
+	return Rect2(Vector2(l * _size.x, t * _size.y), 
+		_size - Vector2((l + r) * _size.x, (t + b) * _size.y))
+
+
 # Build and lay out
 
 
@@ -303,11 +342,17 @@ func _layout() -> void :
 	if _size.y <= 1.0:
 		return
 	var h: = _size.y
-	var w: = _size.x
+	# Everything is placed inside the safe rect, so a notch, a rounded corner or
+	# the home indicator never sits on top of a control. On a desktop this is the
+	# whole viewport and the layout is unchanged.
+	_safe = _safe_rect()
+	var right_edge: = _safe.end.x
+	var bottom_edge: = _safe.end.y
 
 	var base_r: = STICK_R * h
 	var knob_r: = KNOB_R * h
-	_stick_center = Vector2(STICK_AT.x * h, h - STICK_AT.y * h)
+	_stick_center = Vector2(maxf(_safe.position.x + STICK_AT.x * h, 
+		_safe.position.x + base_r + STICK_GAP * h), bottom_edge - STICK_AT.y * h)
 	_stick_travel = maxf(base_r - knob_r, 1.0)
 	_stick_grab = base_r * STICK_GRAB
 	_place(_stick_base, _stick_center, base_r)
@@ -323,7 +368,8 @@ func _layout() -> void :
 	_stick_knob.position = _stick_center - _stick_knob.size * 0.5
 
 	for spec in _buttons:
-		var center: = Vector2(w - float(spec.at.x) * h, h - float(spec.at.y) * h)
+		var center: = Vector2(right_edge - float(spec.at.x) * h, 
+			bottom_edge - float(spec.at.y) * h)
 		spec.center = center
 		spec.radius = float(spec.r) * h
 		_place(spec.node, center, float(spec.radius))
@@ -335,9 +381,9 @@ func _layout() -> void :
 
 	var u: = UTIL_R * h
 	var pitch: = u * 2.0 + UTIL_GAP * h
-	var right: = 0.028 * h
-	var top: = 0.028 * h
-	var x: = w - right - u * 2.0
+	var right: = right_edge - 0.028 * h
+	var top: = _safe.position.y + 0.028 * h
+	var x: = right - u * 2.0
 	var left: = x
 	for ub in _utils:
 		ub.size = Vector2(u * 2.0, u * 2.0)
@@ -345,7 +391,7 @@ func _layout() -> void :
 		left = minf(left, x)
 		x -= pitch
 	_utility_rect = Rect2(left - 8.0, top - 8.0, 
-		(w - right - left) + u * 2.0 + 16.0, u * 2.0 + 16.0)
+		(right - left) + u * 2.0 + 16.0, u * 2.0 + 16.0)
 
 
 func _place(c: Control, center: Vector2, radius: float) -> void :
@@ -472,7 +518,7 @@ func _pointer_up(id: int) -> void :
 ## look area. Anything left unclaimed still belongs to the interface, which is
 ## what keeps the menus, the scoreboard panel and the pause button usable.
 func _zone_at(pos: Vector2) -> String:
-	if pos.y < TOP_SAFE * _size.y:
+	if pos.y < _safe.position.y + TOP_SAFE * _size.y:
 		return ""
 	if _utility_rect.has_point(pos):
 		return ""

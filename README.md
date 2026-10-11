@@ -6,6 +6,8 @@ Apple Developer account to get the file; you only need an Apple ID on the device
 to sign it at install time.
 
 - **Download:** [`Releases`](../../releases) - file name `volleyball-unsigned.ipa`
+- **Fallback:** the same file is attached to every run under *Actions -> iOS ->
+  Artifacts* (`just-volleyball-unsigned-ipa`), for 90 days.
 - **Target:** iOS 15+, iPhone and iPad, landscape only
 - **Device requirement:** A12 or newer (iPhone XS/XR and later, any current
   iPad). Godot's Metal renderer declares the
@@ -29,6 +31,31 @@ your own (free) Apple ID and install it over USB / Wi-Fi.
 The bundle identifier is `com.justvolleyball.game`. If it collides with an
 existing install, change `application/bundle_identifier` in
 `export_presets.cfg` (preset `iOS`) and rebuild.
+
+## Check the download first
+
+Every build ships `volleyball-unsigned.ipa.sha256` next to the `.ipa`. On
+Windows:
+
+```bat
+certutil -hashfile volleyball-unsigned.ipa SHA256
+```
+
+That should print the hash in the `.sha256` file. What the file contains, if you
+want to look inside it yourself:
+
+```
+Payload/volleyball.app/volleyball         arm64 Mach-O, the Godot engine,
+                                          statically linked (no nested
+                                          .framework to re-sign)
+Payload/volleyball.app/volleyball.pck    the whole packed project, ~90 MB
+Payload/volleyball.app/Info.plist        com.justvolleyball.game, landscape only
+```
+
+The CI job fails unless all of that holds - the binary is arm64-only, the pck is
+large enough to be real data, the imported textures and the on-screen control
+script are inside the pck, both orientation arrays are landscape-only and no
+`aps-environment` entitlement leaked in.
 
 ## Touch controls
 
@@ -85,9 +112,12 @@ Notes about the preset (`export_presets.cfg`, preset `iOS`):
 
 - `application/app_store_team_id` is a placeholder - Godot refuses to export
   without a non-empty value, and it is irrelevant while everything is unsigned.
-- `entitlements/increased_memory_limit=true` is deliberate: the packed project
-  is ~90 MB and the extra memory headroom helps.
-- `entitlements/push_notifications` must stay the string `"Disabled"`.
+- `entitlements/increased_memory_limit=false` is deliberate: free Apple IDs
+  cannot sign `com.apple.developer.kernel.increased-memory-limit`, and an
+  unsigned build that carries it fails to install through Sideloadly or
+  AltStore. Flip it to `true` only with a paid developer account.
+- `entitlements/push_notifications` must stay the string `"Disabled"`; anything
+  else writes an `aps-environment` entitlement that breaks re-signing.
 - `application/export_project_only=true` is what keeps CI away from signing.
 
 ## Building locally (on a Mac)

@@ -146,30 +146,99 @@ jobs:
           cp -R "$APP" build/Payload/
           ( cd build && zip -qry volleyball-unsigned.ipa Payload )
           ls -lh build/volleyball-unsigned.ipa
+          ( cd build && shasum -a 256 volleyball-unsigned.ipa > volleyball-unsigned.ipa.sha256 )
+          cat build/volleyball-unsigned.ipa.sha256
 
-      - name: Verify IPA contents
+      - name: Verify the IPA
         run: |
           set -euo pipefail
           IPA=build/volleyball-unsigned.ipa
           rm -rf "$RUNNER_TEMP/ipa-check" && mkdir -p "$RUNNER_TEMP/ipa-check"
           unzip -o -q "$IPA" -d "$RUNNER_TEMP/ipa-check"
           APP="$RUNNER_TEMP/ipa-check/Payload/volleyball.app"
+          ls -l "$APP"
+
+          # What a sideload tool can install: the binary, the packed game data
+          # beside it, and a plist that describes both.
           test -f "$APP/volleyball"
           test -f "$APP/volleyball.pck"
           test -f "$APP/Info.plist"
+          plutil -lint "$APP/Info.plist"
+
+          # Phone architecture only - a simulator or x86_64 slice would install
+          # and then fail to launch.
           file "$APP/volleyball"
-          echo "pck size: $(du -h "$APP/volleyball.pck" | cut -f1)"
-          # The shipped data must contain the on-screen control layer.
+          lipo -info "$APP/volleyball" | grep -q "arm64"
+          if lipo -info "$APP/volleyball" | grep -q "x86_64"; then
+            echo "::error::x86_64 slice got into the device build"
+            exit 1
+          fi
+
+          # Nothing left inside to re-sign: Godot links the engine and MoltenVK
+          # statically, so a Frameworks/ or PlugIns/ directory would mean an
+          # unembedded dylib that only fails once the app is launched.
+          if [ -e "$APP/Frameworks" ] || [ -d "$APP/PlugIns" ]; then
+            echo "::error::nested bundle found - sideload signing would need it too"
+            find "$APP/Frameworks" "$APP/PlugIns" 2>/dev/null | head
+            exit 1
+          fi
+
+          # Real packed data, not an empty placeholder, and the imported
+          # textures are what a source-path-only export would be missing.
+          SIZE=$(stat -f%z "$APP/volleyball.pck")
+          echo "pck: $((SIZE / 1024 / 1024)) MiB"
+          [ "$SIZE" -gt 41943040 ]
+          grep -a -q "\.godot/imported/jvlogo_HD" "$APP/volleyball.pck"
           grep -a -q "game/ui/touch/touch_controls.gd" "$APP/volleyball.pck"
-          echo "touch controls present in the packed project"
+          echo "packed project: imported textures + on-screen controls present"
+
           /usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$APP/Info.plist"
-          /usr/libexec/PlistBuddy -c 'Print :UISupportedInterfaceOrientations' "$APP/Info.plist"
+          NAME=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleDisplayName' "$APP/Info.plist")
+          echo "display name: $NAME"
+          # Godot writes $(INFOPLIST_KEY_CFBundleDisplayName) into the plist and
+          # expects the build to expand it. If that ever stops happening the app
+          # ships that literal string as its name.
+          if ! echo "$NAME" | grep -q "Just Volleyball"; then
+            echo "::error::CFBundleDisplayName was not expanded (got '$NAME')"
+            exit 1
+          fi
+
+          # Landscape only. The on-screen pad lives in the bottom corners of a
+          # landscape screen, so a portrait entry would rotate the controls away
+          # from the thumbs that are holding the phone.
+          for key in UISupportedInterfaceOrientations UISupportedInterfaceOrientations~ipad; do
+            ORIENT=$(/usr/libexec/PlistBuddy -c "Print :$key" "$APP/Info.plist")
+            echo "$key: $ORIENT"
+            echo "$ORIENT" | grep -q "LandscapeLeft"
+            echo "$ORIENT" | grep -q "LandscapeRight"
+            if echo "$ORIENT" | grep -q "Portrait"; then
+              echo "::error::$key allows portrait"
+              exit 1
+            fi
+          done
+
+          # A push-notifications entitlement would make a normal Apple ID refuse
+          # the re-sign, and the game never registers for them.
+          ENT=build/volleyball/volleyball.entitlements
+          if [ -f "$ENT" ]; then
+            plutil -lint "$ENT"
+            if grep -q "aps-environment" "$ENT"; then
+              echo "::error::aps-environment ended up in the entitlements"
+              exit 1
+            fi
+          fi
+
+          du -sh "$APP"
+          echo "--- $IPA ---"
+          unzip -l "$IPA" | tail -3
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: just-volleyball-unsigned-ipa
-          path: build/volleyball-unsigned.ipa
+          path: |
+            build/volleyball-unsigned.ipa
+            build/volleyball-unsigned.ipa.sha256
           if-no-files-found: error
           retention-days: 90
           compression-level: 0
@@ -180,7 +249,9 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          gh release create "$GITHUB_REF_NAME" build/volleyball-unsigned.ipa \
+          gh release create "$GITHUB_REF_NAME" \
+            build/volleyball-unsigned.ipa build/volleyball-unsigned.ipa.sha256 \
             --title "Just Volleyball iOS $GITHUB_REF_NAME" \
             --notes "Unsigned iOS build. Install with Sideloadly or AltStore using your own Apple ID; the app is re-signed on your side." \
-            || gh release upload "$GITHUB_REF_NAME" build/volleyball-unsigned.ipa --clobber
+            || gh release upload "$GITHUB_REF_NAME" \
+              build/volleyball-unsigned.ipa build/volleyball-unsigned.ipa.sha256 --clobber
