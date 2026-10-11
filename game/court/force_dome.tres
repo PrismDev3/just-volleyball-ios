@@ -1,0 +1,33 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://du61vaqwcub8s"]
+
+[ext_resource type="Shader" uid="uid://b1cbkkpib5x0" path="res://game/court/force_dome.gdshader" id="1"]
+
+[resource]
+render_priority = -8
+next_pass = null
+shader = ExtResource("1")
+shader_parameter/tint = Color(0.5923174, 1.9931569, 0, 1)
+shader_parameter/rim_color = Color(1.9154061, 1.9154061, 0, 1)
+shader_parameter/hex_scale = Vector2(33.217, 8.209)
+shader_parameter/hex_density = 3.0
+shader_parameter/line_width = 0.04400000209
+shader_parameter/base_opacity = 0.0
+shader_parameter/fresnel_power = 7.715
+shader_parameter/fresnel_bias = 0.12
+shader_parameter/rim_amt = 2.43
+shader_parameter/shimmer_speed = 1.01
+shader_parameter/shimmer_amt = 0.3
+shader_parameter/pulse_speed = 0.7
+shader_parameter/pulse_amt = 0.35
+shader_parameter/noise_amt = 0.25
+shader_parameter/wall_height = 23.8
+shader_parameter/bottom_fade = 0.12
+shader_parameter/top_fade = 0.85
+shader_parameter/cam_fade_near = 1.5
+shader_parameter/cam_fade_far = 4.5
+shader_parameter/prox_amt = 14.0
+shader_parameter/prox_radius = 11.0
+shader_parameter/ripple_freq = 1.8
+shader_parameter/ripple_speed = 5.0
+shader_parameter/probe_count = 0
+shader_parameter/probe_pos = PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)

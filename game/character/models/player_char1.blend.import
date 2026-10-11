@@ -1,0 +1,68 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://lqkmbriaafhd"
+path="res://.godot/imported/player_char1.blend-fce1efd839fbcdd454a534ab486c31ed.scn"
+
+[deps]
+
+source_file="res://game/character/models/player_char1.blend"
+dest_files=["res://.godot/imported/player_char1.blend-fce1efd839fbcdd454a534ab486c31ed.scn"]
+
+[params]
+
+nodes/root_type="Node3D"
+nodes/root_name="player_char1"
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=false
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=true
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+_subresources={
+"animations": {
+"intro_cool": {
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
+"save_to_file/keep_custom_tracks": false,
+"save_to_file/path": "",
+"settings/loop_mode": 1,
+"slices/amount": 0
+},
+"intro_sass": {
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
+"save_to_file/keep_custom_tracks": false,
+"save_to_file/path": "",
+"settings/loop_mode": 1,
+"slices/amount": 0
+}
+},
+"meshes": {
+"player_char1_mesh_005": {
+"generate/lightmap_uv": 0,
+"generate/lods": 2,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+}
+}
+}
+gltf/naming_version=2
+gltf/embedded_image_handling=1

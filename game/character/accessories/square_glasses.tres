@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AccessoryItem" load_steps=3 format=3 uid="uid://c5pjwltq4o2kd"]
+
+[ext_resource type="PackedScene" uid="uid://bc8c8gacn6dxi" path="res://game/character/accessories/square_glasses.blend" id="1"]
+[ext_resource type="Script" uid="uid://c1rhe1l732pov" path="res://game/character/accessory_item.gd" id="2"]
+
+[resource]
+script = ExtResource("2")
+id = "square_glasses"
+display_name = "square glasses"
+mesh = ExtResource("1")
+price = 25
+start_colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1)
+locked_colors = null

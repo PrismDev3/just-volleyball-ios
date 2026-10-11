@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" uid="uid://crwxlux1w0gjf" path="res://game/stage/nationals_stands.gd" id="1"]
+
+[node name="Stands" type="Node3D" unique_id=413238302]
+script = ExtResource("1")
+
+[node name="StandNorth" type="Node3D" parent="." unique_id=448005867]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -21.5)
+
+[node name="StandSouth" type="Node3D" parent="." unique_id=1164582167]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 21.5)
+
+[node name="StandEast" type="Node3D" parent="." unique_id=834918301]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 0, 0)
+
+[node name="StandWest" type="Node3D" parent="." unique_id=1069806357]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 0, 0)

@@ -1,0 +1,109 @@
+[gd_scene load_steps=17 format=3 uid="uid://d2ci2eqi5163v"]
+
+[ext_resource type="Script" uid="uid://b0qji6j3fj7q" path="res://game/main/main.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://c2crabb66wugf" path="res://game/court/court.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://ddm2w0bh2t8k0" path="res://game/player/player.tscn" id="3"]
+[ext_resource type="Script" uid="uid://jnhyb3ihqq6v" path="res://game/fx/fx.gd" id="4"]
+[ext_resource type="Script" uid="uid://e4o0qbbmsjrd" path="res://game/sfx/sfx.gd" id="5"]
+[ext_resource type="PackedScene" uid="uid://b8crowdaud1o0" path="res://game/sfx/crowd_audio.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://c2nvnpu3doa2g" path="res://game/ball/ball.tscn" id="7"]
+[ext_resource type="Script" uid="uid://c75sw4bnci3cn" path="res://game/camera/camera_rig.gd" id="8"]
+[ext_resource type="Script" uid="uid://d38m6pw7ukjcq" path="res://game/fx/aim_marker.gd" id="9"]
+[ext_resource type="PackedScene" path="res://game/ui/hud.tscn" id="10"]
+
+[sub_resource type="Environment" id="env"]
+background_mode = 1
+background_color = Color(0.1, 0.12, 0.16, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.72, 0.74, 0.8, 1)
+ambient_light_energy = 1.25
+tonemap_mode = 2
+
+[sub_resource type="WorldBoundaryShape3D" id="stage_floor_shape"]
+
+[sub_resource type="StandardMaterial3D" id="verdict_mat"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.95, 0.25, 0.2, 0.75)
+
+[sub_resource type="CylinderMesh" id="verdict_mesh"]
+material = SubResource("verdict_mat")
+top_radius = 0.45
+bottom_radius = 0.45
+height = 0.02
+
+[sub_resource type="StandardMaterial3D" id="barred_mat"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 0.28, 0.22, 1)
+
+[sub_resource type="BoxMesh" id="barred_mesh"]
+material = SubResource("barred_mat")
+size = Vector3(1.75, 0.02, 0.34)
+
+[node name="Main" type="Node3D" unique_id=1849461208]
+script = ExtResource("1")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1842016052]
+environment = SubResource("env")
+
+
+[node name="StageFloor" type="StaticBody3D" parent="." unique_id=2138012464]
+collision_layer = 3
+
+[node name="StageFloorShape" type="CollisionShape3D" parent="StageFloor" unique_id=194132231]
+shape = SubResource("stage_floor_shape")
+
+[node name="Court" parent="." unique_id=1934184597 instance=ExtResource("2")]
+
+
+[node name="Player" parent="." unique_id=2004545427 instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 6)
+
+[node name="Fx" type="Node3D" parent="." unique_id=1739591965]
+script = ExtResource("4")
+
+[node name="Sfx" type="Node3D" parent="." unique_id=1003433124]
+script = ExtResource("5")
+
+[node name="Crowd" parent="." unique_id=1730537868 instance=ExtResource("6")]
+
+[node name="LandingMarker" type="Node3D" parent="." unique_id=972536482]
+visible = false
+
+[node name="Disc" type="MeshInstance3D" parent="LandingMarker" unique_id=1132802938]
+mesh = SubResource("verdict_mesh")
+
+[node name="VerdictLabel" type="Label3D" parent="LandingMarker" unique_id=660212118]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+pixel_size = 0.008
+billboard = 1
+font_size = 96
+outline_size = 24
+
+[node name="BarredMarker" type="Node3D" parent="." unique_id=297401537]
+visible = false
+
+[node name="Bar1" type="MeshInstance3D" parent="BarredMarker" unique_id=2085963700]
+transform = Transform3D(0.7071, 0, -0.7071, 0, 1, 0, 0.7071, 0, 0.7071, 0, 0, 0)
+mesh = SubResource("barred_mesh")
+
+[node name="Bar2" type="MeshInstance3D" parent="BarredMarker" unique_id=1764419449]
+transform = Transform3D(0.7071, 0, 0.7071, 0, 1, 0, -0.7071, 0, 0.7071, 0, 0, 0)
+mesh = SubResource("barred_mesh")
+
+[node name="Ball" parent="." unique_id=11924556 instance=ExtResource("7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 4)
+
+[node name="CameraRig" type="Node3D" parent="." unique_id=1134638721]
+script = ExtResource("8")
+
+[node name="Camera3D" type="Camera3D" parent="CameraRig" unique_id=1506836472]
+fov = 72.0
+
+[node name="AimIndicator" type="Node3D" parent="." unique_id=838200639]
+script = ExtResource("9")
+
+[node name="UiLayer" type="CanvasLayer" parent="." unique_id=1125243991]
+
+[node name="Hud" parent="UiLayer" unique_id=1025558407 instance=ExtResource("10")]

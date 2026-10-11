@@ -1,0 +1,193 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://b1bqrwvrfiu1l"
+path="res://.godot/imported/gymv1.blend-2eea705955b87c13cb707f83bc20012b.scn"
+
+[deps]
+
+source_file="res://game/stage/school/gymv1.blend"
+dest_files=["res://.godot/imported/gymv1.blend-2eea705955b87c13cb707f83bc20012b.scn"]
+
+[params]
+
+nodes/root_type="Node3D"
+nodes/root_name="gymv1"
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=false
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+_subresources={
+"materials": {
+"Black rubber": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://game/stage/school/materials/Black_rubber.tres",
+"use_external/path": "res://game/stage/school/materials/Black_rubber.tres"
+},
+"Blue": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://game/stage/school/materials/Blue.tres",
+"use_external/path": "res://game/stage/school/materials/Blue.tres"
+},
+"Chrome": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://game/stage/school/materials/Chrome.tres",
+"use_external/path": "res://game/stage/school/materials/Chrome.tres"
+},
+"Gray": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://game/stage/school/materials/Gray.tres",
+"use_external/path": "uid://dsndn5tkk6fj"
+},
+"Hallway floor": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://game/stage/school/materials/Hallway_floor.tres",
+"use_external/path": "uid://bm05th56n52yc"
+},
+"Material": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://game/stage/school/materials/Material.tres",
+"use_external/path": "res://game/stage/school/materials/Material.tres"
+},
+"White": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://game/stage/school/materials/White.tres",
+"use_external/path": "uid://caq7ppgsdsrx2"
+},
+"Wood": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://game/stage/school/materials/Wood.tres",
+"use_external/path": "res://game/stage/school/materials/Wood.tres"
+},
+"Wood_Floor": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://game/stage/school/materials/Wood_Floor.tres",
+"use_external/path": "res://game/stage/school/materials/Wood_Floor.tres"
+},
+"glass": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://game/stage/school/materials/glass.tres",
+"use_external/path": "res://game/stage/school/materials/glass.tres"
+},
+"light": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://game/stage/school/materials/light.tres",
+"use_external/path": "res://game/stage/school/materials/light.tres"
+},
+"windowframe": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://game/stage/school/materials/windowframe.tres",
+"use_external/path": "res://game/stage/school/materials/windowframe.tres"
+}
+},
+"meshes": {
+"gymv1_Cube_001": {
+"generate/lightmap_uv": 0,
+"generate/lods": 1,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+},
+"gymv1_Cube_003": {
+"generate/lightmap_uv": 0,
+"generate/lods": 1,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+},
+"gymv1_Cube_004": {
+"generate/lightmap_uv": 0,
+"generate/lods": 1,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+},
+"gymv1_Cube_006": {
+"generate/lightmap_uv": 0,
+"generate/lods": 1,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+},
+"gymv1_Cube_007": {
+"generate/lightmap_uv": 0,
+"generate/lods": 1,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+},
+"gymv1_Cube_010": {
+"generate/lightmap_uv": 0,
+"generate/lods": 1,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+},
+"gymv1_Cube_011": {
+"generate/lightmap_uv": 0,
+"generate/lods": 1,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+},
+"gymv1_Cube_013": {
+"generate/lightmap_uv": 0,
+"generate/lods": 1,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+},
+"gymv1_Cube_014": {
+"generate/lightmap_uv": 0,
+"generate/lods": 1,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+},
+"gymv1_Cube_016": {
+"generate/lightmap_uv": 0,
+"generate/lods": 1,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+}
+}
+}
+gltf/naming_version=2
+gltf/embedded_image_handling=1

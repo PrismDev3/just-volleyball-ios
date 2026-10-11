@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://cjt0cali2qai0"
+path="res://.godot/imported/character_ink.glsl-f6beae3d4d4917511905181602005983.res"
+
+[deps]
+
+source_file="res://game/fx/character_ink.glsl"
+dest_files=["res://.godot/imported/character_ink.glsl-f6beae3d4d4917511905181602005983.res"]
+
+[params]
+

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="StageConfig" load_steps=2 format=3]
+
+[ext_resource type="Script" uid="uid://dl8iqyeimdrlj" path="res://game/stage/stage_config.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+pad = Color(0.09, 0.09, 0.11, 1)
+pole = Color(0.09, 0.09, 0.11, 1)
+tape = Color(0.85, 0.82, 0.2, 1)
+cord = Color(0.05, 0.05, 0.08, 1)
+lines = Color(0.22, 0.42, 0.85, 1)
+floor_color = Color(0.34, 0.6, 0.27, 1)
+casual = true
+reflect = false
+surface = "grass"
+anime_sky = true
+sky_shader = null
+use_sky_color = true
+sky_color = Color(0.55, 0.76, 0.95, 1)
+sun = 1.2

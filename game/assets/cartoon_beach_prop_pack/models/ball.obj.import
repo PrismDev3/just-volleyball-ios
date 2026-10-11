@@ -1,0 +1,23 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://tbpqo1lauytq"
+path="res://.godot/imported/ball.obj-68bbba41df146bfca618972a5d1b1a32.mesh"
+
+[deps]
+
+source_file="res://game/assets/cartoon_beach_prop_pack/models/ball.obj"
+dest_files=["res://.godot/imported/ball.obj-68bbba41df146bfca618972a5d1b1a32.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

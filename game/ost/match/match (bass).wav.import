@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dslb4vf8g6fmd"
+path="res://.godot/imported/match (bass).wav-2d74b946ff2e7dcb449de5d2a05e9911.sample"
+
+[deps]
+
+source_file="res://game/ost/match/match (bass).wav"
+dest_files=["res://.godot/imported/match (bass).wav-2d74b946ff2e7dcb449de5d2a05e9911.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=1
+edit/loop_begin=0
+edit/loop_end=6828386
+compress/mode=0

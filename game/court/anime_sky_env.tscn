@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" uid="uid://bod52xt1hbt7l" path="res://game/court/anime_sky_env.gd" id="1"]
+[ext_resource type="Shader" uid="uid://ddyed6p7m6e85" path="res://game/court/anime_sky.gdshader" id="2"]
+
+[sub_resource type="ShaderMaterial" id="skymat"]
+shader = ExtResource("2")
+shader_parameter/top_color = Color(0.08, 0.4, 0.96, 1)
+shader_parameter/horizon_color = Color(0.42, 0.72, 1, 1)
+shader_parameter/cloud_color = Color(1, 1, 1, 1)
+shader_parameter/cloud_shade = Color(0.74, 0.83, 0.96, 1)
+shader_parameter/sun_color = Color(1, 0.97, 0.88, 1)
+shader_parameter/sun_dir = Vector3(-0.45, 0.62, 0.15)
+shader_parameter/cloud_cover = 0.6
+shader_parameter/cloud_scale = 1.05
+shader_parameter/cloud_drift = 0.004
+shader_parameter/cloud_softness = 0.055
+
+[sub_resource type="Sky" id="sky"]
+sky_material = SubResource("skymat")
+
+[sub_resource type="Environment" id="env"]
+background_mode = 2
+sky = SubResource("sky")
+ambient_light_source = 2
+ambient_light_color = Color(0.72, 0.74, 0.8, 1)
+ambient_light_energy = 1.25
+tonemap_mode = 2
+
+[node name="AnimeSkyEnv" type="Node3D" unique_id=161933406]
+script = ExtResource("1")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=20506724]
+environment = SubResource("env")
+
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=2095245978]
+transform = Transform3D(0.8192, 0, -0.5736, -0.4699, 0.5736, -0.671, 0.329, 0.8192, 0.4699, 0, 10, 0)
+light_energy = 0.06

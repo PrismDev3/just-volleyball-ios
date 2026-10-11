@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AccessoryItem" load_steps=3 format=3 uid="uid://ca24ql8wj33jt"]
+
+[ext_resource type="PackedScene" uid="uid://bugpnwux2ew2v" path="res://game/character/accessories/catears.blend" id="1"]
+[ext_resource type="Script" uid="uid://c1rhe1l732pov" path="res://game/character/accessory_item.gd" id="2"]
+
+[resource]
+script = ExtResource("2")
+id = "catears"
+display_name = "cat ears"
+mesh = ExtResource("1")
+category = "head"
+price = 25
+start_colors = PackedColorArray(0, 0, 0, 1, 0.99884385, 0.58474284, 0.69922155, 1)
+locked_colors = null

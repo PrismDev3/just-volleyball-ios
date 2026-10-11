@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b6w5vny1rybuo"
+path="res://.godot/imported/UI_TwoNote_Set 15_01.wav-391285eb29fcf3d453a4e868f3f10be2.sample"
+
+[deps]
+
+source_file="res://game/sfx/Ui/johnuisfx/UI_TwoNote_Set 15_01.wav"
+dest_files=["res://.godot/imported/UI_TwoNote_Set 15_01.wav-391285eb29fcf3d453a4e868f3f10be2.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=0
+compress/mode=0

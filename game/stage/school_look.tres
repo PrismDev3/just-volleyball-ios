@@ -1,0 +1,50 @@
+[gd_resource type="Resource" script_class="StageConfig" load_steps=2 format=3 uid="uid://csv2f6675hdmu"]
+
+[ext_resource type="Script" uid="uid://dl8iqyeimdrlj" path="res://game/stage/stage_config.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+pad = Color(0.72, 0.15, 0.14, 1)
+pole = Color(0.4, 0.36, 0.38, 1)
+lines = Color(0.97, 0.97, 0.95, 1)
+floor_color = Color(0.8, 0.62, 0.38, 1)
+owns_floor = true
+hand_painted = true
+anime_sky = true
+sky_shader = null
+bloom = true
+accents = [Color(0.26, 0.45, 0.86, 1), Color(0.97, 0.78, 0.24, 1), Color(0.9, 0.27, 0.3, 1), Color(0.24, 0.64, 0.42, 1)]
+accent_mats = ["Blue", "Material"]
+wall_mats = ["White", "Gray", "Hallway floor"]
+wall_wash = 0.07
+tape_by_accent = [Color(0.97, 0.97, 0.95, 1), Color(0.97, 0.97, 0.95, 1), Color(0.97, 0.97, 0.95, 1), Color(0.97, 0.97, 0.95, 1)]
+collision_box = Vector3(18, 14, 26)
+crowd_lift = 0.1
+key_dir = Vector3(-0.2, 0.66, -0.72)
+ambient = 0.86
+sky_tint = Color(0.98, 0.97, 0.94, 1)
+floor_warm = Color(1, 0.76, 0.5, 1)
+floor_warm_amt = 0.28
+saturation = 0.95
+exposure = 1.2
+haze_amt = 0.1
+haze_color = Color(0.84, 0.83, 0.82, 1)
+warm_tint = Color(1, 0.99, 0.97, 1)
+rim = 0.07
+floor_reflect = 0.08
+spec_floor = 0.08
+spec_wall = 0.08
+wall_detail = 0.12
+ceiling_neutral = 0.92
+ceiling_tint = Color(0.5, 0.5, 0.52, 1)
+shade_cool = 0.2
+shade_tint = Color(0.78, 0.84, 1, 1)
+ground_tint = Color(0.7, 0.68, 0.66, 1)
+tex_desat = 0.12
+key = 0.7
+height_shade = 0.35
+ceiling_y = 19.0
+pool_strength = 0.6
+floor_vignette = 0.12
+focus_dim = 0.08
+contrast = 1.05

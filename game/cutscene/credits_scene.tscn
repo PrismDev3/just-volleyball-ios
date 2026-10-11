@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" uid="uid://dexqn3jeb1tby" path="res://game/cutscene/credits_scene.gd" id="1"]
+
+[node name="Credits" type="Node3D" unique_id=1035259945]
+script = ExtResource("1")

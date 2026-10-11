@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AccessoryItem" load_steps=3 format=3 uid="uid://d0v5l7gw4i2v6"]
+
+[ext_resource type="PackedScene" uid="uid://c5nxsqo82o7fk" path="res://game/character/accessories/horns.blend" id="1"]
+[ext_resource type="Script" uid="uid://c1rhe1l732pov" path="res://game/character/accessory_item.gd" id="2"]
+
+[resource]
+script = ExtResource("2")
+id = "horns"
+display_name = "horns"
+mesh = ExtResource("1")
+category = "head"
+price = 25
+start_colors = null
+locked_colors = null

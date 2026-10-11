@@ -1,0 +1,42 @@
+[gd_scene load_steps=10 format=3 uid="uid://dcfvrwfpawh6h"]
+
+[ext_resource type="Script" uid="uid://8arbpb161omm" path="res://game/audio/music_manager.gd" id="1"]
+[ext_resource type="AudioStream" uid="uid://36e01hyg2u1e" path="res://game/ost/preview/volleyball menu.wav" id="2"]
+[ext_resource type="AudioStream" uid="uid://dw8lrnxotgof7" path="res://game/ost/replay/replay loop.wav" id="3"]
+[ext_resource type="AudioStream" uid="uid://cgjnt0tbeqoqg" path="res://game/ost/preview/volleyball open court.wav" id="4"]
+[ext_resource type="AudioStream" uid="uid://gjbgynjimqmu" path="res://game/ost/match/match (drums).wav" id="5"]
+[ext_resource type="AudioStream" uid="uid://dslb4vf8g6fmd" path="res://game/ost/match/match (bass).wav" id="6"]
+[ext_resource type="AudioStream" uid="uid://c830jhc3tfegx" path="res://game/ost/match/match (synths full).wav" id="7"]
+[ext_resource type="AudioStream" uid="uid://l1tc2xe4jvba" path="res://game/ost/match/match (instruments).wav" id="8"]
+[ext_resource type="AudioStream" uid="uid://3km1hc7yvmw1" path="res://game/ost/replay/replay (stinger only).wav" id="9"]
+
+[node name="MusicManager" type="Node" unique_id=1386536660]
+script = ExtResource("1")
+
+[node name="MainTheme" type="AudioStreamPlayer" parent="." unique_id=1083024405]
+stream = ExtResource("2")
+
+[node name="ReplayTheme" type="AudioStreamPlayer" parent="." unique_id=882229211]
+stream = ExtResource("3")
+
+[node name="OpenGymTheme" type="AudioStreamPlayer" parent="." unique_id=1874934579]
+stream = ExtResource("4")
+
+[node name="MatchTheme" type="AudioStreamPlayer" parent="." unique_id=1653590955]
+stream = ExtResource("5")
+volume_db = -2.221
+
+[node name="MatchBass" type="AudioStreamPlayer" parent="." unique_id=1653590956]
+stream = ExtResource("6")
+volume_db = -2.221
+
+[node name="MatchLayer1" type="AudioStreamPlayer" parent="." unique_id=577181754]
+stream = ExtResource("7")
+volume_db = -2.221
+
+[node name="MatchLayer2" type="AudioStreamPlayer" parent="." unique_id=858485189]
+stream = ExtResource("8")
+volume_db = -2.221
+
+[node name="WinJingle" type="AudioStreamPlayer" parent="." unique_id=554950725]
+stream = ExtResource("9")

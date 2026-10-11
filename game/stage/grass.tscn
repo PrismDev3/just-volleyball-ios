@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" uid="uid://d3ootjh5wpem0" path="res://game/stage/design_guide.gd" id="1"]
+
+[sub_resource type="StandardMaterial3D" id="grass_mat"]
+albedo_color = Color(0.36, 0.62, 0.28, 1)
+
+[sub_resource type="PlaneMesh" id="ground"]
+material = SubResource("grass_mat")
+size = Vector2(160, 160)
+
+[sub_resource type="StandardMaterial3D" id="tree_mat"]
+albedo_color = Color(0.2, 0.42, 0.22, 1)
+
+[sub_resource type="BoxMesh" id="treeline"]
+material = SubResource("tree_mat")
+size = Vector3(160, 9, 3)
+
+[node name="Grass" type="Node3D" unique_id=332994124]
+
+[node name="Ground" type="MeshInstance3D" parent="." unique_id=2085312611]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03, 0)
+mesh = SubResource("ground")
+
+[node name="TreelineN" type="MeshInstance3D" parent="." unique_id=207894079]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, -55)
+mesh = SubResource("treeline")
+
+[node name="TreelineS" type="MeshInstance3D" parent="." unique_id=1621941325]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 55)
+mesh = SubResource("treeline")
+
+[node name="DesignGuide" type="Node3D" parent="." unique_id=1465271720]
+script = ExtResource("1")

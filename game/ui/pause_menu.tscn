@@ -1,0 +1,204 @@
+[gd_scene load_steps=4 format=3 uid="uid://cg2p483fe7tfr"]
+
+[ext_resource type="Script" uid="uid://chbne5itq5olw" path="res://game/ui/pause_menu.gd" id="1"]
+[ext_resource type="PackedScene" path="res://game/ui/settings_panel.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://game/ui/how_to_play.tscn" id="3"]
+
+[node name="PauseMenu" type="Control" unique_id=2044251826]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1")
+
+[node name="PausePanel" type="PanelContainer" parent="." unique_id=1322545386]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -110.0
+offset_right = 140.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PauseBox" type="VBoxContainer" parent="PausePanel" unique_id=1838132658]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="PauseTitle" type="Label" parent="PausePanel/PauseBox" unique_id=1970097854]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "paused"
+horizontal_alignment = 1
+
+[node name="ResumeBtn" type="Button" parent="PausePanel/PauseBox" unique_id=1677911656]
+custom_minimum_size = Vector2(220, 42)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "resume"
+
+[node name="SettingsBtn" type="Button" parent="PausePanel/PauseBox" unique_id=1891220738]
+custom_minimum_size = Vector2(220, 42)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "settings"
+
+[node name="TeamsBtn" type="Button" parent="PausePanel/PauseBox" unique_id=575667500]
+visible = false
+custom_minimum_size = Vector2(220, 42)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "teams"
+
+[node name="HowToBtn" type="Button" parent="PausePanel/PauseBox" unique_id=1222221084]
+custom_minimum_size = Vector2(220, 42)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "how to play"
+
+[node name="MenuBtn" type="Button" parent="PausePanel/PauseBox" unique_id=696954666]
+custom_minimum_size = Vector2(220, 42)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "back to menu"
+
+[node name="ExitBtn" type="Button" parent="PausePanel/PauseBox" unique_id=1500383135]
+custom_minimum_size = Vector2(220, 42)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "exit game"
+
+[node name="SettingsPopup" type="PanelContainer" parent="." unique_id=135309456]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -340.0
+offset_top = -270.0
+offset_right = 340.0
+offset_bottom = 270.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SettingsBox" type="VBoxContainer" parent="SettingsPopup" unique_id=1822152501]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="SettingsTitle" type="Label" parent="SettingsPopup/SettingsBox" unique_id=1096395832]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "settings"
+horizontal_alignment = 1
+
+[node name="Panel" parent="SettingsPopup/SettingsBox" unique_id=889168474 instance=ExtResource("2")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SettingsBackBtn" type="Button" parent="SettingsPopup/SettingsBox" unique_id=506971415]
+custom_minimum_size = Vector2(220, 42)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "back"
+
+[node name="HowToPopup" type="PanelContainer" parent="." unique_id=647939873]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -330.0
+offset_top = -240.0
+offset_right = 330.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HowToBox" type="VBoxContainer" parent="HowToPopup" unique_id=424092817]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HowToTitle" type="Label" parent="HowToPopup/HowToBox" unique_id=594617214]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "how to play"
+horizontal_alignment = 1
+
+[node name="Manual" parent="HowToPopup/HowToBox" unique_id=1719321397 instance=ExtResource("3")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HowToBackBtn" type="Button" parent="HowToPopup/HowToBox" unique_id=513727146]
+custom_minimum_size = Vector2(220, 42)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "back"
+
+[node name="TeamsPopup" type="PanelContainer" parent="." unique_id=1338345705]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -130.0
+offset_right = 160.0
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TeamsBox" type="VBoxContainer" parent="TeamsPopup" unique_id=756909446]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TeamsTitle" type="Label" parent="TeamsPopup/TeamsBox" unique_id=1535188407]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "teams"
+horizontal_alignment = 1
+
+[node name="Hint" type="Label" parent="TeamsPopup/TeamsBox" unique_id=356742878]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.72, 0.78, 1)
+theme_override_font_sizes/font_size = 15
+text = "you join when the rally ends"
+horizontal_alignment = 1
+
+[node name="BlueBtn" type="Button" parent="TeamsPopup/TeamsBox" unique_id=1767750369]
+custom_minimum_size = Vector2(260, 42)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "join home"
+
+[node name="RedBtn" type="Button" parent="TeamsPopup/TeamsBox" unique_id=786088659]
+custom_minimum_size = Vector2(260, 42)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "join away"
+
+[node name="WatchBtn" type="Button" parent="TeamsPopup/TeamsBox" unique_id=1806011086]
+custom_minimum_size = Vector2(260, 42)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "spectate"
+
+[node name="TeamsBackBtn" type="Button" parent="TeamsPopup/TeamsBox" unique_id=935603900]
+custom_minimum_size = Vector2(260, 42)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "back"

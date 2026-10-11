@@ -1,0 +1,102 @@
+[gd_scene load_steps=14 format=3 uid="uid://b8pi631cyovn3"]
+
+[ext_resource type="Script" uid="uid://cocuyn372oilp" path="res://game/gym/open_gym.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://ddm2w0bh2t8k0" path="res://game/player/player.tscn" id="2"]
+[ext_resource type="Script" uid="uid://c75sw4bnci3cn" path="res://game/camera/camera_rig.gd" id="3"]
+[ext_resource type="Script" uid="uid://d38m6pw7ukjcq" path="res://game/fx/aim_marker.gd" id="4"]
+[ext_resource type="Script" uid="uid://jnhyb3ihqq6v" path="res://game/fx/fx.gd" id="5"]
+[ext_resource type="Script" uid="uid://e4o0qbbmsjrd" path="res://game/sfx/sfx.gd" id="6"]
+[ext_resource type="PackedScene" uid="uid://b8crowdaud1o0" path="res://game/sfx/crowd_audio.tscn" id="7"]
+[ext_resource type="PackedScene" path="res://game/ui/hud.tscn" id="8"]
+
+[sub_resource type="Environment" id="env"]
+background_mode = 1
+background_color = Color(0.84, 0.8, 0.74, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.9, 0.87, 0.82, 1)
+ambient_light_energy = 1.35
+tonemap_mode = 2
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.84, 0.8, 0.74, 1)
+fog_density = 1.0
+fog_sky_affect = 0.0
+fog_height = 11.0
+fog_height_density = -0.16
+fog_depth_begin = 50.0
+fog_depth_end = 210.0
+
+[sub_resource type="StandardMaterial3D" id="verdict_mat"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.95, 0.25, 0.2, 0.75)
+
+[sub_resource type="CylinderMesh" id="verdict_mesh"]
+material = SubResource("verdict_mat")
+top_radius = 0.45
+bottom_radius = 0.45
+height = 0.02
+
+[sub_resource type="StandardMaterial3D" id="barred_mat"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 0.28, 0.22, 1)
+
+[sub_resource type="BoxMesh" id="barred_mesh"]
+material = SubResource("barred_mat")
+size = Vector3(1.75, 0.02, 0.34)
+
+[node name="OpenGym" type="Node3D" unique_id=682611260]
+script = ExtResource("1")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1828309145]
+environment = SubResource("env")
+
+[node name="Player" parent="." unique_id=2077783574 instance=ExtResource("2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 20)
+
+[node name="CameraRig" type="Node3D" parent="." unique_id=470772915]
+script = ExtResource("3")
+
+[node name="Camera3D" type="Camera3D" parent="CameraRig" unique_id=1885961206]
+fov = 72.0
+
+[node name="AimIndicator" type="Node3D" parent="." unique_id=1947920032]
+visible = false
+script = ExtResource("4")
+
+[node name="LandingMarker" type="Node3D" parent="." unique_id=1155466900]
+visible = false
+
+[node name="Disc" type="MeshInstance3D" parent="LandingMarker" unique_id=1052910671]
+mesh = SubResource("verdict_mesh")
+
+[node name="VerdictLabel" type="Label3D" parent="LandingMarker" unique_id=1980922235]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+pixel_size = 0.008
+billboard = 1
+font_size = 96
+outline_size = 24
+
+[node name="BarredMarker" type="Node3D" parent="." unique_id=2037513235]
+visible = false
+
+[node name="Bar1" type="MeshInstance3D" parent="BarredMarker" unique_id=570312917]
+transform = Transform3D(0.7071, 0, -0.7071, 0, 1, 0, 0.7071, 0, 0.7071, 0, 0, 0)
+mesh = SubResource("barred_mesh")
+
+[node name="Bar2" type="MeshInstance3D" parent="BarredMarker" unique_id=910264458]
+transform = Transform3D(0.7071, 0, 0.7071, 0, 1, 0, -0.7071, 0, 0.7071, 0, 0, 0)
+mesh = SubResource("barred_mesh")
+
+[node name="Fx" type="Node3D" parent="." unique_id=106499820]
+script = ExtResource("5")
+
+[node name="Sfx" type="Node3D" parent="." unique_id=629913981]
+script = ExtResource("6")
+
+[node name="Crowd" parent="." unique_id=1607104190 instance=ExtResource("7")]
+
+[node name="UiLayer" type="CanvasLayer" parent="." unique_id=3232819]
+
+[node name="Hud" parent="UiLayer" unique_id=1603614566 instance=ExtResource("8")]

@@ -1,0 +1,22 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://c8rrie5gq47fy"]
+
+[ext_resource type="Shader" uid="uid://wjd2coo7dl8d" path="res://game/assets/palmtree/palmtree_shader.tres" id="1"]
+[ext_resource type="Texture2D" uid="uid://c734i4nyrpnpg" path="res://game/assets/palmtree/NoiseClouds01.png" id="2"]
+
+[resource]
+render_priority = 0
+next_pass = null
+shader = ExtResource("1")
+shader_parameter/NoiseSize = 0.2
+shader_parameter/WindStrength = 0.1
+shader_parameter/NoiseTexture = ExtResource("2")
+shader_parameter/BranchColor = Color(0.11637835, 0.23046875, 0.047114298, 1)
+shader_parameter/LeavesColor = Color(0.49803922, 0.7529412, 0.25882354, 1)
+shader_parameter/DitherIntensity = 0.86000004085
+shader_parameter/DitherFadeStart = 0.9
+shader_parameter/Roughness = 0.722000034295
+shader_parameter/Normal_Smoothing = 0.42400002014
+shader_parameter/ShadowContrast = 0.0
+shader_parameter/SSSStrength = 0.526000024985
+shader_parameter/ShadowColorTweak = Vector3(0.53, 0.27, 0.075)
+shader_parameter/AlphaCutoff = 0.2850000135375

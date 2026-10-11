@@ -1,0 +1,501 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Script" uid="uid://dy0p5fo3f34rn" path="res://game/ui/hud.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://wbqkruq55fla" path="res://game/ui_icon/Keyboard & Mouse/Default/mouse_left.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://drcngfqhkblhw" path="res://game/ui_icon/Keyboard & Mouse/Default/keyboard_f.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://cmeme4i5hofmv" path="res://game/ui_icon/Keyboard & Mouse/Default/mouse_right.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://5n2ii27jynwt" path="res://game/ui_icon/Keyboard & Mouse/Default/keyboard_space_icon.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://bwveth2w2cqor" path="res://game/ui_icon/Keyboard & Mouse/Default/keyboard_shift_icon.png" id="6"]
+[ext_resource type="PackedScene" path="res://game/ui/chat_panel.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://cg2p483fe7tfr" path="res://game/ui/pause_menu.tscn" id="8"]
+[ext_resource type="PackedScene" path="res://game/replay/view_controls.tscn" id="9"]
+
+[node name="Hud" type="Control" unique_id=1251329797]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1")
+
+[node name="Readout" type="MarginContainer" parent="." unique_id=2135052642]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -300.0
+offset_right = 360.0
+offset_bottom = -184.0
+grow_vertical = 0
+
+[node name="Box" type="VBoxContainer" parent="Readout" unique_id=1547078582]
+layout_mode = 2
+alignment = 2
+
+[node name="DiveLabel" type="Label" parent="Readout/Box" unique_id=1702298755]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+
+[node name="TouchLabel" type="Label" parent="Readout/Box" unique_id=635405597]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+
+[node name="ActionLabel" type="Label" parent="Readout/Box" unique_id=2012747879]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+
+[node name="PowerBar" type="ProgressBar" parent="Readout/Box" unique_id=1442308189]
+custom_minimum_size = Vector2(240, 16)
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+show_percentage = false
+
+[node name="Scoreboard" type="Control" parent="." unique_id=1470301386]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 120.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="SweatBox" type="Control" parent="." unique_id=1910004208]
+visible = false
+layout_mode = 1
+anchors_preset = 0
+offset_left = 20.0
+offset_top = 98.0
+offset_right = 220.0
+offset_bottom = 140.0
+mouse_filter = 2
+
+[node name="ServeLabel" type="Label" parent="." unique_id=1720742219]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -720.0
+offset_top = 14.0
+offset_right = -20.0
+offset_bottom = 60.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 17
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="BannerLabel" type="Label" parent="." unique_id=833284172]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -400.0
+offset_top = 148.0
+offset_right = 400.0
+offset_bottom = 198.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 34
+horizontal_alignment = 1
+
+[node name="StatsPanel" type="PanelContainer" parent="." unique_id=1733201843]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -250.0
+offset_right = 350.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Box" type="VBoxContainer" parent="StatsPanel" unique_id=1664770688]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="StatsPanel/Box" unique_id=200246635]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "match stats"
+horizontal_alignment = 1
+
+[node name="Grid" type="GridContainer" parent="StatsPanel/Box" unique_id=742272889]
+layout_mode = 2
+columns = 5
+
+[node name="HeadName" type="Label" parent="StatsPanel/Box/Grid" unique_id=899601956]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "player"
+
+[node name="HeadPts" type="Label" parent="StatsPanel/Box/Grid" unique_id=910836783]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "pts"
+
+[node name="HeadBlk" type="Label" parent="StatsPanel/Box/Grid" unique_id=1401483737]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "blk"
+
+[node name="HeadRcv" type="Label" parent="StatsPanel/Box/Grid" unique_id=127152250]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "rcv"
+
+[node name="HeadSet" type="Label" parent="StatsPanel/Box/Grid" unique_id=1838052025]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "set"
+
+[node name="NetLabel" type="Label" parent="." unique_id=874830228]
+visible = false
+layout_mode = 1
+offset_left = 14.0
+offset_top = 46.0
+offset_right = 760.0
+offset_bottom = 140.0
+theme_override_colors/font_color = Color(0.7, 0.85, 0.95, 0.85)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.9)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 14
+
+[node name="Crosshair" type="Label" parent="." unique_id=1804219300]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -16.0
+offset_right = 12.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 26
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CamLabel" type="Label" parent="." unique_id=1704437895]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -44.0
+offset_right = 360.0
+offset_bottom = -16.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 18
+text = "cam: dynamic"
+
+[node name="Controls" type="HBoxContainer" parent="." unique_id=295028885]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -340.0
+offset_top = -96.0
+offset_right = -16.0
+offset_bottom = -14.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 14
+alignment = 2
+
+[node name="Action" type="VBoxContainer" parent="Controls" unique_id=1516113951]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Name" type="Label" parent="Controls/Action" unique_id=686541913]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "touch"
+horizontal_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Controls/Action" unique_id=2124341478]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Set" type="VBoxContainer" parent="Controls" unique_id=219263648]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Name" type="Label" parent="Controls/Set" unique_id=141501901]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "set"
+horizontal_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Controls/Set" unique_id=504022912]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Dive" type="VBoxContainer" parent="Controls" unique_id=219263647]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Name" type="Label" parent="Controls/Dive" unique_id=1415019006]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "dive"
+horizontal_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Controls/Dive" unique_id=504022911]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Jump" type="VBoxContainer" parent="Controls" unique_id=232184316]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Name" type="Label" parent="Controls/Jump" unique_id=688062871]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "jump"
+horizontal_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Controls/Jump" unique_id=442658790]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("5")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Strafe" type="VBoxContainer" parent="Controls" unique_id=1826797093]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Name" type="Label" parent="Controls/Strafe" unique_id=60669406]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "strafe"
+horizontal_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Controls/Strafe" unique_id=1942604570]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("6")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Fade" type="ColorRect" parent="." unique_id=1969083016]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CineName" type="Label" parent="." unique_id=21775897]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -500.0
+offset_top = 90.0
+offset_right = 500.0
+offset_bottom = 190.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 14
+theme_override_font_sizes/font_size = 76
+text = "player"
+horizontal_alignment = 1
+
+[node name="CineSub" type="Label" parent="." unique_id=490695812]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -500.0
+offset_top = 176.0
+offset_right = 500.0
+offset_bottom = 216.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+
+[node name="Dissolve" type="TextureRect" parent="." unique_id=102782207]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Countdown" type="Label" parent="." unique_id=774641975]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -160.0
+offset_right = 160.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 18
+theme_override_font_sizes/font_size = 200
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PostStats" type="PanelContainer" parent="." unique_id=1329027433]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -420.0
+offset_top = -300.0
+offset_right = 420.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dim" type="ColorRect" parent="PostStats" unique_id=994665773]
+layout_mode = 2
+color = Color(0.08, 0.09, 0.11, 0.92)
+
+[node name="Box" type="VBoxContainer" parent="PostStats" unique_id=2075824455]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Margin" type="MarginContainer" parent="PostStats/Box" unique_id=997531317]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 18
+
+[node name="Inner" type="VBoxContainer" parent="PostStats/Box/Margin" unique_id=1119348054]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Result" type="Label" parent="PostStats/Box/Margin/Inner" unique_id=1855112064]
+layout_mode = 2
+theme_override_font_sizes/font_size = 52
+text = "match stats"
+horizontal_alignment = 1
+
+[node name="Rows" type="VBoxContainer" parent="PostStats/Box/Margin/Inner" unique_id=1868720307]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Buttons" type="HBoxContainer" parent="PostStats/Box/Margin/Inner" unique_id=454965315]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="PlayAgainBtn" type="Button" parent="PostStats/Box/Margin/Inner/Buttons" unique_id=186023688]
+custom_minimum_size = Vector2(280, 52)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "play again"
+
+[node name="LobbyBtn" type="Button" parent="PostStats/Box/Margin/Inner/Buttons" unique_id=1758173422]
+custom_minimum_size = Vector2(280, 52)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "back to lobby"
+
+[node name="WaitLabel" type="Label" parent="PostStats/Box/Margin/Inner" unique_id=1102146127]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "waiting for the host to choose..."
+horizontal_alignment = 1
+
+[node name="Loading" type="ColorRect" parent="." unique_id=896552729]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="LoadingLabel" type="Label" parent="Loading" unique_id=691364303]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -40.0
+offset_right = 300.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 44
+text = "loading..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Chat" parent="." unique_id=58243516 instance=ExtResource("7")]
+layout_mode = 1
+
+[node name="PauseMenu" parent="." unique_id=1680641755 instance=ExtResource("8")]
+layout_mode = 1
+
+[node name="SpectateBar" type="CenterContainer" parent="." unique_id=1938523035]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -76.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Controls" parent="SpectateBar" unique_id=850341913 instance=ExtResource("9")]
+layout_mode = 2

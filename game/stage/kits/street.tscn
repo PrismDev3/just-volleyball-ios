@@ -1,0 +1,482 @@
+[gd_scene load_steps=55 format=3]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fxftv"]
+shading_mode = 0
+albedo_color = Color(0.12, 0.08, 0.11, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1aayu"]
+size = Vector3(117.6, 0.1, 117.6)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ijuhw"]
+shading_mode = 0
+albedo_color = Color(0.09, 0.06, 0.12, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nqsga"]
+size = Vector3(5.477566, 13.615883, 5.477566)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gg13l"]
+size = Vector3(8.168777, 11.4806795, 8.168777)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vsla2"]
+size = Vector3(6.391627, 19.772213, 6.391627)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rwdy3"]
+size = Vector3(8.79961, 9.772545, 8.79961)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qde6s"]
+size = Vector3(4.724933, 17.588537, 4.724933)
+
+[sub_resource type="BoxMesh" id="BoxMesh_v2gx5"]
+size = Vector3(6.0028386, 15.577131, 6.0028386)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nsaqi"]
+size = Vector3(8.892085, 25.022497, 8.892085)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2pib3"]
+size = Vector3(6.4912863, 22.518242, 6.4912863)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rg2m2"]
+size = Vector3(8.150596, 13.038776, 8.150596)
+
+[sub_resource type="BoxMesh" id="BoxMesh_spef5"]
+size = Vector3(5.906255, 11.940296, 5.906255)
+
+[sub_resource type="BoxMesh" id="BoxMesh_x1llh"]
+size = Vector3(4.1363935, 15.357772, 4.1363935)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2u7qh"]
+size = Vector3(8.440237, 25.322598, 8.440237)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cci75"]
+size = Vector3(8.875105, 21.631699, 8.875105)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ps2hu"]
+size = Vector3(4.4693766, 8.084348, 4.4693766)
+
+[sub_resource type="BoxMesh" id="BoxMesh_u6upy"]
+size = Vector3(6.392043, 11.618206, 6.392043)
+
+[sub_resource type="BoxMesh" id="BoxMesh_48rhl"]
+size = Vector3(6.416995, 18.567286, 6.416995)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nsiql"]
+size = Vector3(7.5494676, 20.057251, 7.5494676)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fdagw"]
+size = Vector3(6.5263085, 18.46701, 6.5263085)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xuk1h"]
+size = Vector3(7.986189, 25.86484, 7.986189)
+
+[sub_resource type="BoxMesh" id="BoxMesh_j6qtg"]
+size = Vector3(6.112521, 23.879911, 6.112521)
+
+[sub_resource type="BoxMesh" id="BoxMesh_j0qq7"]
+size = Vector3(7.1244965, 12.901156, 7.1244965)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ttaeh"]
+size = Vector3(4.01554, 24.003357, 4.01554)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5jrvv"]
+size = Vector3(4.3761883, 10.406283, 4.3761883)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yij20"]
+size = Vector3(4.3604302, 9.090736, 4.3604302)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jx3ti"]
+size = Vector3(7.7592087, 11.4135475, 7.7592087)
+
+[sub_resource type="BoxMesh" id="BoxMesh_baiet"]
+size = Vector3(6.07953, 17.408546, 6.07953)
+
+[sub_resource type="BoxMesh" id="BoxMesh_l7m14"]
+size = Vector3(8.09634, 11.197629, 8.09634)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fplb5"]
+size = Vector3(8.685078, 19.021412, 8.685078)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vv78j"]
+size = Vector3(6.9792013, 25.49417, 6.9792013)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5tepb"]
+size = Vector3(7.6147385, 24.431156, 7.6147385)
+
+[sub_resource type="BoxMesh" id="BoxMesh_de8qc"]
+size = Vector3(4.4747515, 20.31266, 4.4747515)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xm3ke"]
+size = Vector3(5.5665784, 20.779058, 5.5665784)
+
+[sub_resource type="BoxMesh" id="BoxMesh_eentl"]
+size = Vector3(5.015495, 11.842406, 5.015495)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jnohx"]
+size = Vector3(5.8458223, 11.656547, 5.8458223)
+
+[sub_resource type="BoxMesh" id="BoxMesh_syhn6"]
+size = Vector3(5.8577337, 25.728077, 5.8577337)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8k62s"]
+size = Vector3(6.3273573, 22.659653, 6.3273573)
+
+[sub_resource type="BoxMesh" id="BoxMesh_u0lfh"]
+size = Vector3(7.353386, 20.952377, 7.353386)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3oiu2"]
+size = Vector3(5.916201, 9.256079, 5.916201)
+
+[sub_resource type="BoxMesh" id="BoxMesh_83gta"]
+size = Vector3(6.516323, 8.133501, 6.516323)
+
+[sub_resource type="BoxMesh" id="BoxMesh_udgio"]
+size = Vector3(5.39328, 12.345309, 5.39328)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qh33a"]
+size = Vector3(8.52557, 15.84136, 8.52557)
+
+[sub_resource type="BoxMesh" id="BoxMesh_126pk"]
+size = Vector3(6.6460958, 19.741766, 6.6460958)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fgoa2"]
+size = Vector3(7.50563, 25.560173, 7.50563)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3kter"]
+size = Vector3(7.0503106, 8.485123, 7.0503106)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fuyr1"]
+size = Vector3(5.2660017, 14.619521, 5.2660017)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1tfnw"]
+size = Vector3(5.6312175, 18.454643, 5.6312175)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0s8r7"]
+shading_mode = 0
+albedo_color = Color(1, 0.55, 0.25, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_23nga"]
+size = Vector3(36, 0.18, 0.18)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1hnyn"]
+size = Vector3(36, 0.18, 0.18)
+
+[sub_resource type="BoxMesh" id="BoxMesh_o7t3l"]
+size = Vector3(0.18, 0.18, 52)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0jtob"]
+size = Vector3(0.18, 0.18, 52)
+
+[node name="Street" type="Node3D" unique_id=1096863373]
+
+[node name="Backdrop" type="Node3D" parent="." unique_id=1874859878]
+
+[node name="Ground" type="Node3D" parent="Backdrop" unique_id=1846312789]
+
+[node name="GroundPlane" type="MeshInstance3D" parent="Backdrop/Ground" unique_id=1519788090]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
+material_override = SubResource("StandardMaterial3D_fxftv")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_1aayu")
+
+[node name="Skyline" type="Node3D" parent="Backdrop" unique_id=1987401631]
+
+[node name="Building0" type="MeshInstance3D" parent="Backdrop/Skyline" unique_id=1814461686]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.8079414, 45.348907)
+material_override = SubResource("StandardMaterial3D_ijuhw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_nqsga")
+
+[node name="Building1" type="MeshInstance3D" parent="Backdrop/Skyline" unique_id=816429416]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1221805, 5.7403398, 44.54217)
+material_override = SubResource("StandardMaterial3D_ijuhw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_gg13l")
+
+[node name="Building2" type="MeshInstance3D" parent="Backdrop/Skyline" unique_id=1440988255]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.363725, 9.8861065, 44.12671)
+material_override = SubResource("StandardMaterial3D_ijuhw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_vsla2")
+
+[node name="Building3" type="MeshInstance3D" parent="Backdrop/Skyline" unique_id=2004530623]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.39734, 4.8862724, 42.354923)
+material_override = SubResource("StandardMaterial3D_ijuhw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_rwdy3")
+
+[node name="Building4" type="MeshInstance3D" parent="Backdrop/Skyline" unique_id=1675397367]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.87759, 8.794269, 39.265026)
+material_override = SubResource("StandardMaterial3D_ijuhw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_qde6s")
+
+[node name="Building5" type="MeshInstance3D" parent="Backdrop/Skyline" unique_id=1253958899]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.887766, 7.7885656, 36.737)
+material_override = SubResource("StandardMaterial3D_ijuhw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_v2gx5")
+
+[node name="Building6" type="MeshInstance3D" parent="Backdrop/Skyline" unique_id=199929588]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.84115, 12.511249, 30.671492)
+material_override = SubResource("StandardMaterial3D_ijuhw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_nsaqi")
+
+[node name="Building7" type="MeshInstance3D" parent="Backdrop/Skyline" unique_id=1502902232]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.233715, 11.259121, 25.576548)
+material_override = SubResource("StandardMaterial3D_ijuhw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_2pib3")
+
+[node name="Building8" type="MeshInstance3D" parent="Backdrop/Skyline" unique_id=965141344]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.157887, 6.519388, 20.80814)
+material_override = SubResource("StandardMaterial3D_ijuhw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_rg2m2")
+
+[node name="Building9" type="MeshInstance3D" parent="Backdrop/Skyline" unique_id=1773642059]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.360886, 5.970148, 15.055062)
+material_override = SubResource("StandardMaterial3D_ijuhw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_spef5")
+
+[node name="Building10" type="MeshInstance3D" parent="Backdrop/Skyline" unique_id=1544151951]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.30321, 7.678886, 9.206313)
+material_override = SubResource("StandardMaterial3D_ijuhw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_x1llh")
+
+[node name="Building11" type="MeshInstance3D" parent="Backdrop/Skyline" unique_id=276546458]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.352375, 12.661299, 3.1021874)
+material_override = SubResource("StandardMaterial3D_ijuhw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_2u7qh")
+
+[node name="Building12" type="MeshInstance3D" parent="Backdrop/Skyline" unique_id=329373403]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.71367, 10.815849, -3.0584986)
+material_override = SubResource("StandardMaterial3D_ijuhw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_cci75")
+
+[node name="Building13" type="MeshInstance3D" parent="Backdrop/Skyline" unique_id=617155500]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.76095, 4.042174, -8.885828)
+material_override = SubResource("StandardMaterial3D_ijuhw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_ps2hu")
+
+[node name="Building14" type="MeshInstance3D" parent="Backdrop/Skyline" unique_id=1136292274]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.77162, 5.809103, -15.201038)
+material_override = SubResource("StandardMaterial3D_ijuhw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_u6upy")
+
+[node name="Building15" type="MeshInstance3D" parent="Backdrop/Skyline" unique_id=1746590646]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.29564, 9.283643, -20.361359)
+material_override = SubResource("StandardMaterial3D_ijuhw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_48rhl")
+
+[node name="Building16" type="MeshInstance3D" parent="Backdrop/Skyline" unique_id=173997443]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.638767, 10.0286255, -27.27422)
+material_override = SubResource("StandardMaterial3D_ijuhw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_nsiql")
+
+[node name="Building17" type="MeshInstance3D" parent="Backdrop/Skyline" unique_id=144267934]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.803436, 9.233505, -31.570206)
+material_override = SubResource("StandardMaterial3D_ijuhw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_fdagw")
+
+[node name="Building18" type="MeshInstance3D" parent="Backdrop/Skyline" unique_id=1498516843]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.334925, 12.93242, -36.057465)
+material_override = SubResource("StandardMaterial3D_ijuhw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_xuk1h")
+
+[node name="Building19" type="MeshInstance3D" parent="Backdrop/Skyline" unique_id=922168943]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.226826, 11.939956, -38.19489)
+material_override = SubResource("StandardMaterial3D_ijuhw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_j6qtg")
+
+[node name="Building20" type="MeshInstance3D" parent="Backdrop/Skyline" unique_id=764303020]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.53109, 6.450578, -42.662846)
+material_override = SubResource("StandardMaterial3D_ijuhw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_j0qq7")
+
+[node name="Building21" type="MeshInstance3D" parent="Backdrop/Skyline" unique_id=1338478500]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.649804, 12.001678, -45.14774)
+material_override = SubResource("StandardMaterial3D_ijuhw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_ttaeh")
+
+[node name="Building22" type="MeshInstance3D" parent="Backdrop/Skyline" unique_id=2147390236]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.005498, 5.2031417, -43.693245)
+material_override = SubResource("StandardMaterial3D_ijuhw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_5jrvv")
+
+[node name="Building23" type="MeshInstance3D" parent="Backdrop/Skyline" unique_id=920593866]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.395191e-15, 4.545368, -44.056534)
+material_override = SubResource("StandardMaterial3D_ijuhw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_yij20")
+
+[node name="Building24" type="MeshInstance3D" parent="Backdrop/Skyline" unique_id=2099860626]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3061047, 5.7067738, -45.88032)
+material_override = SubResource("StandardMaterial3D_ijuhw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_jx3ti")
+
+[node name="Building25" type="MeshInstance3D" parent="Backdrop/Skyline" unique_id=893662332]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.79652, 8.704273, -45.67138)
+material_override = SubResource("StandardMaterial3D_ijuhw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_baiet")
+
+[node name="Building26" type="MeshInstance3D" parent="Backdrop/Skyline" unique_id=1973852566]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.764612, 5.5988145, -43.20047)
+material_override = SubResource("StandardMaterial3D_ijuhw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_l7m14")
+
+[node name="Building27" type="MeshInstance3D" parent="Backdrop/Skyline" unique_id=1751007854]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.19851, 9.510706, -38.148323)
+material_override = SubResource("StandardMaterial3D_ijuhw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_fplb5")
+
+[node name="Building28" type="MeshInstance3D" parent="Backdrop/Skyline" unique_id=109281751]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.22467, 12.747085, -34.69278)
+material_override = SubResource("StandardMaterial3D_ijuhw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_vv78j")
+
+[node name="Building29" type="MeshInstance3D" parent="Backdrop/Skyline" unique_id=1038583558]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.133167, 12.215578, -30.010283)
+material_override = SubResource("StandardMaterial3D_ijuhw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_5tepb")
+
+[node name="Building30" type="MeshInstance3D" parent="Backdrop/Skyline" unique_id=63822763]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.725132, 10.15633, -26.629307)
+material_override = SubResource("StandardMaterial3D_ijuhw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_de8qc")
+
+[node name="Building31" type="MeshInstance3D" parent="Backdrop/Skyline" unique_id=1856799136]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5798, 10.389529, -21.026756)
+material_override = SubResource("StandardMaterial3D_ijuhw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_xm3ke")
+
+[node name="Building32" type="MeshInstance3D" parent="Backdrop/Skyline" unique_id=913817606]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.53046, 5.921203, -15.470729)
+material_override = SubResource("StandardMaterial3D_ijuhw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_eentl")
+
+[node name="Building33" type="MeshInstance3D" parent="Backdrop/Skyline" unique_id=1224172637]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.86537, 5.8282733, -9.323132)
+material_override = SubResource("StandardMaterial3D_ijuhw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_jnohx")
+
+[node name="Building34" type="MeshInstance3D" parent="Backdrop/Skyline" unique_id=77897569]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.309982, 12.864038, -3.1676896)
+material_override = SubResource("StandardMaterial3D_ijuhw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_syhn6")
+
+[node name="Building35" type="MeshInstance3D" parent="Backdrop/Skyline" unique_id=1460557242]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.313625, 11.329826, 3.031135)
+material_override = SubResource("StandardMaterial3D_ijuhw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_8k62s")
+
+[node name="Building36" type="MeshInstance3D" parent="Backdrop/Skyline" unique_id=44680181]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.14586, 10.476189, 9.381417)
+material_override = SubResource("StandardMaterial3D_ijuhw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_u0lfh")
+
+[node name="Building37" type="MeshInstance3D" parent="Backdrop/Skyline" unique_id=486539064]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.546593, 4.6280394, 14.765663)
+material_override = SubResource("StandardMaterial3D_ijuhw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_3oiu2")
+
+[node name="Building38" type="MeshInstance3D" parent="Backdrop/Skyline" unique_id=1688680289]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.036476, 4.0667505, 20.227072)
+material_override = SubResource("StandardMaterial3D_ijuhw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_83gta")
+
+[node name="Building39" type="MeshInstance3D" parent="Backdrop/Skyline" unique_id=382067096]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.016926, 6.1726546, 25.423523)
+material_override = SubResource("StandardMaterial3D_ijuhw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_udgio")
+
+[node name="Building40" type="MeshInstance3D" parent="Backdrop/Skyline" unique_id=782425543]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.083595, 7.92068, 31.831854)
+material_override = SubResource("StandardMaterial3D_ijuhw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_qh33a")
+
+[node name="Building41" type="MeshInstance3D" parent="Backdrop/Skyline" unique_id=1894695966]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.984766, 9.870883, 35.627064)
+material_override = SubResource("StandardMaterial3D_ijuhw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_126pk")
+
+[node name="Building42" type="MeshInstance3D" parent="Backdrop/Skyline" unique_id=1629435359]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.3071, 12.7800865, 39.97132)
+material_override = SubResource("StandardMaterial3D_ijuhw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_fgoa2")
+
+[node name="Building43" type="MeshInstance3D" parent="Backdrop/Skyline" unique_id=1834589622]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.203617, 4.2425613, 41.90893)
+material_override = SubResource("StandardMaterial3D_ijuhw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_3kter")
+
+[node name="Building44" type="MeshInstance3D" parent="Backdrop/Skyline" unique_id=471934352]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.522727, 7.3097606, 44.6942)
+material_override = SubResource("StandardMaterial3D_ijuhw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_fuyr1")
+
+[node name="Building45" type="MeshInstance3D" parent="Backdrop/Skyline" unique_id=1566313714]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0381346, 9.227322, 43.930695)
+material_override = SubResource("StandardMaterial3D_ijuhw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_1tfnw")
+
+[node name="CourtRim" type="Node3D" parent="Backdrop" unique_id=106564962]
+
+[node name="RimFar" type="MeshInstance3D" parent="Backdrop/CourtRim" unique_id=1180099780]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 26)
+material_override = SubResource("StandardMaterial3D_0s8r7")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_23nga")
+
+[node name="RimNear" type="MeshInstance3D" parent="Backdrop/CourtRim" unique_id=28250169]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, -26)
+material_override = SubResource("StandardMaterial3D_0s8r7")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_1hnyn")
+
+[node name="RimEast" type="MeshInstance3D" parent="Backdrop/CourtRim" unique_id=200010197]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0.04, 0)
+material_override = SubResource("StandardMaterial3D_0s8r7")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_o7t3l")
+
+[node name="RimWest" type="MeshInstance3D" parent="Backdrop/CourtRim" unique_id=346011701]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.04, 0)
+material_override = SubResource("StandardMaterial3D_0s8r7")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_0jtob")

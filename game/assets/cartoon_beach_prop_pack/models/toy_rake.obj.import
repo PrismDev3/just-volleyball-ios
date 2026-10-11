@@ -1,0 +1,23 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dwm5771k6ytio"
+path="res://.godot/imported/toy_rake.obj-fb6fde1faa8908d2d91f6140f6fd14bd.mesh"
+
+[deps]
+
+source_file="res://game/assets/cartoon_beach_prop_pack/models/toy_rake.obj"
+dest_files=["res://.godot/imported/toy_rake.obj-fb6fde1faa8908d2d91f6140f6fd14bd.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=true

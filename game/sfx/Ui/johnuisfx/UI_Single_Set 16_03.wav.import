@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://4u6cjkljm8nl"
+path="res://.godot/imported/UI_Single_Set 16_03.wav-c2fdd97805dc36b5b246050bd8f13c0b.sample"
+
+[deps]
+
+source_file="res://game/sfx/Ui/johnuisfx/UI_Single_Set 16_03.wav"
+dest_files=["res://.godot/imported/UI_Single_Set 16_03.wav-c2fdd97805dc36b5b246050bd8f13c0b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=0
+compress/mode=0

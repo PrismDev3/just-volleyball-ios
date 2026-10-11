@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dsndn5tkk6fj"]
+
+[resource]
+resource_name = "Gray"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.86, 0.8, 0.76, 1)
+roughness = 0.5
+metadata/extras = {
+"dff": {},
+"mmd_material": {},
+"yp": {
+"active_ypaint_node": ""
+}
+}

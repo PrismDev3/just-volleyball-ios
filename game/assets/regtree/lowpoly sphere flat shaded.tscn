@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://d14gxc0tireph"]
+
+[ext_resource type="PackedScene" uid="uid://l5qfup0xddmb" path="res://game/assets/regtree/ball.fbx" id="1"]
+[ext_resource type="Material" uid="uid://cpdpby3q3oey3" path="res://game/assets/regtree/foliage_mat.tres" id="2"]
+
+[node name="yes" unique_id=183330867 instance=ExtResource("1")]
+
+[node name="EPIC AWESOME SPHERE" parent="." index="0" unique_id=109491388]
+transform = Transform3D(1, 0, 0, 0, 1, 7.54979e-08, 0, -7.54979e-08, 1, 0, 0.83587515, 0)
+material_override = ExtResource("2")

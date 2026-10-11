@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="AccessoryItem" load_steps=3 format=3 uid="uid://b70oqski5tmxh"]
+
+[ext_resource type="PackedScene" uid="uid://b7b4ildpfn5ic" path="res://game/character/accessories/bunnyears.blend" id="1"]
+[ext_resource type="Script" uid="uid://c1rhe1l732pov" path="res://game/character/accessory_item.gd" id="2"]
+
+[resource]
+script = ExtResource("2")
+id = "bunnyears"
+display_name = "bunny ears"
+mesh = ExtResource("1")
+category = "head"
+price = 25
+start_colors = PackedColorArray(1, 1, 1, 1, 0.99884385, 0.58474284, 0.69922155, 1)
+locked_colors = null
+jiggle_stiffness = 1.35
+jiggle_damping = 1.1
+jiggle_swing = 0.8
+jiggle_gravity = 0.0

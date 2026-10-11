@@ -1,0 +1,186 @@
+name: iOS
+
+# Builds an unsigned .ipa on GitHub's macOS runners. No Apple Developer account,
+# no signing identity and no Mac are required - the artifact is signed later on
+# the device side (Sideloadly, AltStore, TrollStore, ...).
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ios-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  GODOT_VERSION: "4.7.2-stable"
+  # Directory name Godot uses under `export_templates/` (and `4.7.2.stable`
+  # below has to stay in sync - it is the engine's own version folder).
+  GODOT_TEMPLATE_DIR: "4.7.2.stable"
+  PRESET: "iOS"
+
+jobs:
+  ipa:
+    name: Unsigned IPA
+    runs-on: macos-15
+    timeout-minutes: 150
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Show toolchain
+        run: |
+          set -euo pipefail
+          sw_vers
+          xcodebuild -version
+          xcrun --sdk iphoneos --show-sdk-version
+
+      - name: Cache Godot editor and iOS export template
+        uses: actions/cache@v4
+        with:
+          path: |
+            ${{ runner.temp }}/godot/Godot.app
+            ~/Library/Application Support/Godot/export_templates/${{ env.GODOT_TEMPLATE_DIR }}/ios.zip
+          key: godot-${{ env.GODOT_VERSION }}-${{ runner.os }}
+
+      - name: Install Godot
+        run: |
+          set -euo pipefail
+          GODOT="$RUNNER_TEMP/godot/Godot.app/Contents/MacOS/Godot"
+          if [ ! -x "$GODOT" ]; then
+            mkdir -p "$RUNNER_TEMP/godot"
+            curl -fL --retry 3 --retry-delay 5 -o "$RUNNER_TEMP/godot.zip" \
+              "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}/Godot_v${GODOT_VERSION}_macos.universal.zip"
+            unzip -q "$RUNNER_TEMP/godot.zip" -d "$RUNNER_TEMP/godot"
+          fi
+          test -x "$GODOT"
+          echo "GODOT=$GODOT" >> "$GITHUB_ENV"
+          "$GODOT" --version
+
+      - name: Install iOS export template
+        run: |
+          set -euo pipefail
+          TPL="$HOME/Library/Application Support/Godot/export_templates/${GODOT_TEMPLATE_DIR}"
+          mkdir -p "$TPL"
+          if [ ! -f "$TPL/ios.zip" ]; then
+            # The templates archive is ~1.2 GB; only the iOS platform file
+            # (ios.zip) is extracted out of it.
+            curl -fL --retry 3 --retry-delay 5 -o "$RUNNER_TEMP/templates.tpz" \
+              "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}/Godot_v${GODOT_VERSION}_export_templates.tpz"
+            mkdir -p "$RUNNER_TEMP/tpl"
+            unzip -q -o "$RUNNER_TEMP/templates.tpz" "templates/ios.zip" -d "$RUNNER_TEMP/tpl"
+            mv "$RUNNER_TEMP/tpl/templates/ios.zip" "$TPL/ios.zip"
+            rm -f "$RUNNER_TEMP/templates.tpz"
+          fi
+          ls -l "$TPL/ios.zip"
+
+      - name: Import project
+        run: |
+          set -euo pipefail
+          if ! "$GODOT" --headless --path "$GITHUB_WORKSPACE" --import \
+                > "$RUNNER_TEMP/import.log" 2>&1; then
+            echo "::error::Project import failed"
+            tail -100 "$RUNNER_TEMP/import.log"
+            exit 1
+          fi
+          grep -cE "ERROR:" "$RUNNER_TEMP/import.log" || true
+          tail -20 "$RUNNER_TEMP/import.log"
+
+      - name: Export Xcode project
+        run: |
+          set -euo pipefail
+          rm -rf build
+          mkdir -p build
+          if ! "$GODOT" --headless --path "$GITHUB_WORKSPACE" \
+                --export-release "$PRESET" "$GITHUB_WORKSPACE/build/volleyball.ipa" \
+                > "$RUNNER_TEMP/export.log" 2>&1; then
+            echo "::error::Export failed"
+            tail -120 "$RUNNER_TEMP/export.log"
+            exit 1
+          fi
+          if grep -qE "^ERROR: (Export|Xcode Build|Apple Embedded|Prepare Templates)" \
+                "$RUNNER_TEMP/export.log"; then
+            echo "::error::Export reported errors"
+            grep -nE "^ERROR:" "$RUNNER_TEMP/export.log" | head -40
+            exit 1
+          fi
+          tail -15 "$RUNNER_TEMP/export.log"
+          echo "--- generated ---"
+          ls -l build
+          test -f build/volleyball.pck
+          test -d build/volleyball.xcodeproj
+
+      - name: Build app (no code signing)
+        run: |
+          set -euo pipefail
+          cd build
+          xcodebuild \
+            -project volleyball.xcodeproj \
+            -scheme volleyball \
+            -sdk iphoneos \
+            -configuration Release \
+            -destination 'generic/platform=iOS' \
+            -derivedDataPath "$RUNNER_TEMP/dd" \
+            CONFIGURATION_BUILD_DIR="$PWD/app" \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGN_ENTITLEMENTS="" \
+            INFOPLIST_KEY_CFBundleDisplayName="Just Volleyball" \
+            build
+
+      - name: Package unsigned IPA
+        run: |
+          set -euo pipefail
+          APP="$(find build/app -maxdepth 1 -name '*.app' -print -quit)"
+          echo "app: $APP"
+          test -n "$APP"
+          rm -rf build/Payload && mkdir -p build/Payload
+          cp -R "$APP" build/Payload/
+          ( cd build && zip -qry volleyball-unsigned.ipa Payload )
+          ls -lh build/volleyball-unsigned.ipa
+
+      - name: Verify IPA contents
+        run: |
+          set -euo pipefail
+          IPA=build/volleyball-unsigned.ipa
+          rm -rf "$RUNNER_TEMP/ipa-check" && mkdir -p "$RUNNER_TEMP/ipa-check"
+          unzip -o -q "$IPA" -d "$RUNNER_TEMP/ipa-check"
+          APP="$RUNNER_TEMP/ipa-check/Payload/volleyball.app"
+          test -f "$APP/volleyball"
+          test -f "$APP/volleyball.pck"
+          test -f "$APP/Info.plist"
+          file "$APP/volleyball"
+          echo "pck size: $(du -h "$APP/volleyball.pck" | cut -f1)"
+          # The shipped data must contain the on-screen control layer.
+          grep -a -q "game/ui/touch/touch_controls.gd" "$APP/volleyball.pck"
+          echo "touch controls present in the packed project"
+          /usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$APP/Info.plist"
+          /usr/libexec/PlistBuddy -c 'Print :UISupportedInterfaceOrientations' "$APP/Info.plist"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: just-volleyball-unsigned-ipa
+          path: build/volleyball-unsigned.ipa
+          if-no-files-found: error
+          retention-days: 90
+          compression-level: 0
+
+      - name: Attach to release
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh release create "$GITHUB_REF_NAME" build/volleyball-unsigned.ipa \
+            --title "Just Volleyball iOS $GITHUB_REF_NAME" \
+            --notes "Unsigned iOS build. Install with Sideloadly or AltStore using your own Apple ID; the app is re-signed on your side." \
+            || gh release upload "$GITHUB_REF_NAME" build/volleyball-unsigned.ipa --clobber

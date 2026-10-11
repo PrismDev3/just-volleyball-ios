@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bb81g0du5rab5"]
+
+[ext_resource type="Shader" uid="uid://cdxsriedqimml" path="res://game/court/light_shaft.gdshader" id="1"]
+
+[sub_resource type="ShaderMaterial" id="mat_shaft"]
+render_priority = 0
+next_pass = null
+shader = ExtResource("1")
+shader_parameter/beam = Color(1, 0.95, 0.78, 1)
+shader_parameter/intensity = 0.4
+
+[sub_resource type="QuadMesh" id="quad_shaft"]
+size = Vector2(2.1, 15)
+
+[node name="SunShaft" type="MeshInstance3D" unique_id=484574337]
+material_override = SubResource("mat_shaft")
+cast_shadow = 0
+custom_aabb = AABB(-9, -9, -9, 18, 18, 18)
+mesh = SubResource("quad_shaft")

@@ -1,0 +1,23 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://copff53yvag5g"
+path="res://.godot/imported/float_04.obj-2b9d713384f84010277d2529ea95e607.mesh"
+
+[deps]
+
+source_file="res://game/assets/cartoon_beach_prop_pack/models/float_04.obj"
+dest_files=["res://.godot/imported/float_04.obj-2b9d713384f84010277d2529ea95e607.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

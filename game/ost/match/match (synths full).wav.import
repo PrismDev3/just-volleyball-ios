@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c830jhc3tfegx"
+path="res://.godot/imported/match (synths full).wav-9f81c67e7cec95a322f74647372a24c0.sample"
+
+[deps]
+
+source_file="res://game/ost/match/match (synths full).wav"
+dest_files=["res://.godot/imported/match (synths full).wav-9f81c67e7cec95a322f74647372a24c0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=1
+edit/loop_begin=0
+edit/loop_end=6828386
+compress/mode=0

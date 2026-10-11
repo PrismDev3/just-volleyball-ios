@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dws1q0cc0wmcv"
+path="res://.godot/imported/replay (w_stinger).wav-8c864731e18098d577947e99a4726c58.sample"
+
+[deps]
+
+source_file="res://game/ost/replay/replay (w_stinger).wav"
+dest_files=["res://.godot/imported/replay (w_stinger).wav-8c864731e18098d577947e99a4726c58.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=0
+compress/mode=0

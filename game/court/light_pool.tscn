@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://3vs5ds40dab5"]
+
+[ext_resource type="Shader" uid="uid://06kpwpjjw40b" path="res://game/court/light_pool.gdshader" id="1"]
+
+[sub_resource type="ShaderMaterial" id="mat_pool"]
+render_priority = 0
+next_pass = null
+shader = ExtResource("1")
+shader_parameter/beam = Color(1, 0.85, 0.55, 1)
+shader_parameter/intensity = 0.4
+shader_parameter/softness = 0.55
+
+[sub_resource type="QuadMesh" id="quad_pool"]
+size = Vector2(4, 9)
+orientation = 1
+
+[node name="LightPool" type="MeshInstance3D" unique_id=1997425013]
+material_override = SubResource("mat_pool")
+cast_shadow = 0
+mesh = SubResource("quad_pool")

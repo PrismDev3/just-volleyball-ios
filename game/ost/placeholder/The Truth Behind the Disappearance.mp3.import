@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dxlbi2fdnal5p"
+path="res://.godot/imported/The Truth Behind the Disappearance.mp3-787b5e25600b8560981636016d089687.mp3str"
+
+[deps]
+
+source_file="res://game/ost/placeholder/The Truth Behind the Disappearance.mp3"
+dest_files=["res://.godot/imported/The Truth Behind the Disappearance.mp3-787b5e25600b8560981636016d089687.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

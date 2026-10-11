@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://crdykrfcwnc8c"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bt44c"]
+shading_mode = 0
+albedo_color = Color(0.82, 0.64, 0.42, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_p2dke"]
+size = Vector3(117.6, 0.04, 117.6)
+
+[node name="Practice" type="Node3D" unique_id=917663935]
+
+[node name="Backdrop" type="Node3D" parent="." unique_id=779392398]
+
+[node name="EnvFloor" type="Node3D" parent="Backdrop" unique_id=1209405468]
+
+[node name="EnvFloor" type="MeshInstance3D" parent="Backdrop/EnvFloor" unique_id=665682844]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.02, 0)
+material_override = SubResource("StandardMaterial3D_bt44c")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_p2dke")

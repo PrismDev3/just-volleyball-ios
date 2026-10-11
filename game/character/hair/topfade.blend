@@ -1,0 +1,13 @@
+placeholder for a source file that was not part of the shipped build.
+
+The original project imported this model from topfade.blend. The game never loaded the
+source at runtime - it loaded the imported scene - and that imported scene was
+recovered and is still intact. This placeholder therefore only exists so the
+exporter re-emits the `.remap` entry that points at it; Blender is never asked
+to open it.
+
+A recovered copy of the model sits next to the project in:
+    .assets/game/character/hair/topfade.glb
+
+Put the real source back here with Blender configured in the editor and Godot
+will reimport it normally.

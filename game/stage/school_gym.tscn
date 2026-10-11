@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://snrclis66st8"]
+
+[ext_resource type="PackedScene" uid="uid://cxgd7m3d5ia1m" path="res://game/stage/school/hs_stage.blend" id="1"]
+[ext_resource type="Script" uid="uid://dlve3rv7gplj2" path="res://game/stage/stage_dress.gd" id="2"]
+[ext_resource type="Resource" uid="uid://csv2f6675hdmu" path="res://game/stage/school_look.tres" id="3"]
+[ext_resource type="PackedScene" uid="uid://bb81g0du5rab5" path="res://game/court/sun_shaft.tscn" id="4"]
+[ext_resource type="Script" uid="uid://d3ootjh5wpem0" path="res://game/stage/design_guide.gd" id="5"]
+
+[node name="SchoolGym" type="Node3D" unique_id=1604137553]
+
+[node name="Gym" parent="." unique_id=1408005180 instance=ExtResource("1")]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 0, 0, 0)
+
+[node name="Dress" type="Node3D" parent="." unique_id=439754104]
+script = ExtResource("2")
+look = ExtResource("3")
+
+[node name="SunShafts" type="Node3D" parent="." unique_id=1579680456]
+visible = false
+
+[node name="Shaft1" parent="SunShafts" unique_id=1812583396 instance=ExtResource("4")]
+transform = Transform3D(0.819, 0.574, 0, -0.574, 0.819, 0, 0, 0, 1, -7, 4.5, -2)
+
+[node name="Shaft2" parent="SunShafts" unique_id=1454347782 instance=ExtResource("4")]
+transform = Transform3D(0.819, 0.574, 0, -0.574, 0.819, 0, 0, 0, 1, -3.5, 4.5, 0)
+
+[node name="Shaft3" parent="SunShafts" unique_id=326459650 instance=ExtResource("4")]
+transform = Transform3D(0.819, 0.574, 0, -0.574, 0.819, 0, 0, 0, 1, 0, 4.5, 2)
+
+[node name="Shaft4" parent="SunShafts" unique_id=644649890 instance=ExtResource("4")]
+transform = Transform3D(0.819, 0.574, 0, -0.574, 0.819, 0, 0, 0, 1, 3.5, 4.5, 3.5)
+
+[node name="Shaft5" parent="SunShafts" unique_id=2122689707 instance=ExtResource("4")]
+transform = Transform3D(0.819, 0.574, 0, -0.574, 0.819, 0, 0, 0, 1, 7, 4.5, 5)
+
+[node name="DesignGuide" type="Node3D" parent="." unique_id=1018816430]
+script = ExtResource("5")

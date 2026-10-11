@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AccessoryItem" load_steps=3 format=3 uid="uid://bck13dvifwkkj"]
+
+[ext_resource type="PackedScene" uid="uid://3s11syxdd74a" path="res://game/character/accessories/sprout.blend" id="1"]
+[ext_resource type="Script" uid="uid://c1rhe1l732pov" path="res://game/character/accessory_item.gd" id="2"]
+
+[resource]
+script = ExtResource("2")
+id = "sprout"
+display_name = "sprout"
+mesh = ExtResource("1")
+category = "head"
+price = 25
+start_colors = PackedColorArray(0.15368599, 0.8232878, 7.70092e-07, 1)
+locked_colors = null

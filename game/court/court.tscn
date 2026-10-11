@@ -1,0 +1,340 @@
+[gd_scene load_steps=28 format=3 uid="uid://c2crabb66wugf"]
+
+[ext_resource type="Shader" uid="uid://cp05s8nof34rn" path="res://game/court/net.gdshader" id="1"]
+[ext_resource type="Shader" uid="uid://bwgdw3m2fwlsq" path="res://game/court/box_shadow.gdshader" id="2"]
+
+[sub_resource type="StandardMaterial3D" id="court_mat"]
+albedo_color = Color(0.85, 0.5, 0.25, 1)
+
+[sub_resource type="BoxMesh" id="court_mesh"]
+material = SubResource("court_mat")
+size = Vector3(9, 0.1, 18)
+
+[sub_resource type="StandardMaterial3D" id="line_mat"]
+albedo_color = Color(0.95, 0.95, 0.95, 1)
+
+[sub_resource type="BoxMesh" id="side_line_mesh"]
+material = SubResource("line_mat")
+size = Vector3(0.05, 0.02, 18)
+
+[sub_resource type="BoxMesh" id="end_line_mesh"]
+material = SubResource("line_mat")
+size = Vector3(9, 0.02, 0.05)
+
+[sub_resource type="StandardMaterial3D" id="post_mat"]
+albedo_color = Color(0.78, 0.8, 0.85, 1)
+roughness = 0.8
+
+[sub_resource type="CylinderMesh" id="post_mesh"]
+material = SubResource("post_mat")
+top_radius = 0.032
+bottom_radius = 0.032
+height = 2.55
+
+[sub_resource type="StandardMaterial3D" id="post_pad_mat"]
+albedo_color = Color(0.2, 0.36, 0.82, 1)
+roughness = 0.9
+
+[sub_resource type="CylinderMesh" id="post_pad_mesh"]
+material = SubResource("post_pad_mat")
+top_radius = 0.065
+bottom_radius = 0.07
+height = 1.7
+
+[sub_resource type="ShaderMaterial" id="net_mat"]
+render_priority = 0
+next_pass = null
+shader = ExtResource("1")
+shader_parameter/wobble = 0.0
+shader_parameter/hit_x = 0.0
+shader_parameter/hit_y = 0.5
+shader_parameter/grid = Vector2(46, 7)
+shader_parameter/sag = 0.34
+shader_parameter/ripple = 0.11
+shader_parameter/tape_top = 0.11
+shader_parameter/tape_bottom = 0.06
+shader_parameter/tape_side = 0.009
+shader_parameter/side_inset = 0.0213
+shader_parameter/tape_color = Color(0.97, 0.97, 0.95, 1)
+shader_parameter/cord_color = Color(0, 0, 0, 1)
+shader_parameter/ink_color = Color(0.05, 0.05, 0.08, 1)
+shader_parameter/tape_ink = 0.014
+shader_parameter/aspect = 9.0
+shader_parameter/cut_center = Vector2(0.5, 0.5)
+shader_parameter/cut_radius = 0.0
+shader_parameter/cut_feather = 0.11
+shader_parameter/cut_aspect = 1.78
+shader_parameter/cut_yscale = 0.6
+
+[sub_resource type="PlaneMesh" id="net_mesh"]
+material = SubResource("net_mat")
+size = Vector2(9.4, 1)
+subdivide_width = 46
+subdivide_depth = 6
+orientation = 2
+
+[sub_resource type="BoxMesh" id="band_mesh"]
+material = SubResource("line_mat")
+size = Vector3(9.4, 0.08, 0.06)
+
+[sub_resource type="StandardMaterial3D" id="ink_shell_mat"]
+cull_mode = 1
+shading_mode = 0
+albedo_color = Color(0.05, 0.05, 0.08, 1)
+grow = true
+grow_amount = 0.045
+
+[sub_resource type="StandardMaterial3D" id="antenna_red"]
+albedo_color = Color(0.86, 0.11, 0.12, 1)
+roughness = 0.7
+
+[sub_resource type="CylinderMesh" id="antenna_red_seg"]
+material = SubResource("antenna_red")
+top_radius = 0.011
+bottom_radius = 0.011
+height = 0.16
+
+[sub_resource type="StandardMaterial3D" id="antenna_white"]
+albedo_color = Color(0.96, 0.96, 0.95, 1)
+roughness = 0.7
+
+[sub_resource type="CylinderMesh" id="antenna_white_seg"]
+material = SubResource("antenna_white")
+top_radius = 0.011
+bottom_radius = 0.011
+height = 0.16
+
+[sub_resource type="StandardMaterial3D" id="antenna_ink_mat"]
+cull_mode = 1
+shading_mode = 0
+albedo_color = Color(0.05, 0.05, 0.08, 1)
+grow = true
+grow_amount = 0.014
+
+[sub_resource type="CylinderMesh" id="antenna_shell"]
+top_radius = 0.011
+bottom_radius = 0.011
+height = 0.96
+
+[sub_resource type="StandardMaterial3D" id="cord_mat"]
+albedo_color = Color(0.16, 0.16, 0.18, 1)
+roughness = 0.9
+
+[sub_resource type="CylinderMesh" id="cord_mesh"]
+material = SubResource("cord_mat")
+top_radius = 0.012
+bottom_radius = 0.012
+height = 0.1
+
+[sub_resource type="ShaderMaterial" id="post_shadow_mat"]
+render_priority = 1
+next_pass = null
+shader = ExtResource("2")
+shader_parameter/shadow_color = Color(0.1, 0.1, 0.13, 1)
+shader_parameter/strength = 0.5
+shader_parameter/softness = 0.35
+shader_parameter/corner = 0.4
+
+[sub_resource type="QuadMesh" id="QuadMesh_1sn7o"]
+size = Vector2(2, 2)
+orientation = 1
+
+[sub_resource type="BoxShape3D" id="net_wall_shape"]
+size = Vector3(9.4, 5.5, 0.12)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ymaxi"]
+render_priority = 0
+next_pass = null
+shader = ExtResource("2")
+shader_parameter/shadow_color = Color(0.1, 0.1, 0.13, 1)
+shader_parameter/strength = 0.42
+shader_parameter/softness = 0.6
+shader_parameter/corner = 0.12
+
+[node name="Court" type="Node3D" unique_id=2078194844]
+
+[node name="CourtFloor" type="MeshInstance3D" parent="." unique_id=827279417]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+mesh = SubResource("court_mesh")
+
+[node name="SideLineWest" type="MeshInstance3D" parent="." unique_id=2090757887]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0.01, 0)
+mesh = SubResource("side_line_mesh")
+
+[node name="SideLineEast" type="MeshInstance3D" parent="." unique_id=1641580698]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.01, 0)
+mesh = SubResource("side_line_mesh")
+
+[node name="EndLineNorth" type="MeshInstance3D" parent="." unique_id=1296969175]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, -9)
+mesh = SubResource("end_line_mesh")
+
+[node name="EndLineSouth" type="MeshInstance3D" parent="." unique_id=111112523]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 9)
+mesh = SubResource("end_line_mesh")
+
+[node name="CenterLine" type="MeshInstance3D" parent="." unique_id=2028957325]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
+mesh = SubResource("end_line_mesh")
+
+[node name="PostWest" type="MeshInstance3D" parent="." unique_id=1880604604]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7, 1.275, 0)
+mesh = SubResource("post_mesh")
+
+[node name="PostWestPad" type="MeshInstance3D" parent="." unique_id=1880604605]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7, 0.85, 0)
+mesh = SubResource("post_pad_mesh")
+
+[node name="PostEast" type="MeshInstance3D" parent="." unique_id=1240900567]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7, 1.275, 0)
+mesh = SubResource("post_mesh")
+
+[node name="PostEastPad" type="MeshInstance3D" parent="." unique_id=1240900568]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7, 0.85, 0)
+mesh = SubResource("post_pad_mesh")
+
+[node name="Net" type="MeshInstance3D" parent="." unique_id=588240859]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+mesh = SubResource("net_mesh")
+
+[node name="NetBand" type="MeshInstance3D" parent="." unique_id=1425018688]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.16, 0)
+mesh = SubResource("band_mesh")
+
+[node name="PostWestInk" type="MeshInstance3D" parent="." unique_id=1880604606]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7, 1.275, 0)
+material_override = SubResource("ink_shell_mat")
+mesh = SubResource("post_mesh")
+
+[node name="PostWestPadInk" type="MeshInstance3D" parent="." unique_id=1880604607]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7, 0.85, 0)
+material_override = SubResource("ink_shell_mat")
+mesh = SubResource("post_pad_mesh")
+
+[node name="PostEastInk" type="MeshInstance3D" parent="." unique_id=1240900569]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7, 1.275, 0)
+material_override = SubResource("ink_shell_mat")
+mesh = SubResource("post_mesh")
+
+[node name="PostEastPadInk" type="MeshInstance3D" parent="." unique_id=1240900570]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7, 0.85, 0)
+material_override = SubResource("ink_shell_mat")
+mesh = SubResource("post_pad_mesh")
+
+[node name="NetBandInk" type="MeshInstance3D" parent="." unique_id=1425018689]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.16, 0)
+material_override = SubResource("ink_shell_mat")
+mesh = SubResource("band_mesh")
+
+[node name="NetBandBottom" type="MeshInstance3D" parent="." unique_id=1425018690]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22, 0)
+mesh = SubResource("band_mesh")
+
+[node name="NetBandBottomInk" type="MeshInstance3D" parent="." unique_id=1425018691]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22, 0)
+material_override = SubResource("ink_shell_mat")
+mesh = SubResource("band_mesh")
+
+[node name="AntennaWest" type="Node3D" parent="." unique_id=581882944]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, 0)
+
+[node name="Seg0" type="MeshInstance3D" parent="AntennaWest" unique_id=1477715512]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.28, 0)
+mesh = SubResource("antenna_red_seg")
+
+[node name="Seg1" type="MeshInstance3D" parent="AntennaWest" unique_id=1703840501]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.44, 0)
+mesh = SubResource("antenna_white_seg")
+
+[node name="Seg2" type="MeshInstance3D" parent="AntennaWest" unique_id=13186991]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, 0)
+mesh = SubResource("antenna_red_seg")
+
+[node name="Seg3" type="MeshInstance3D" parent="AntennaWest" unique_id=473128058]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.76, 0)
+mesh = SubResource("antenna_white_seg")
+
+[node name="Seg4" type="MeshInstance3D" parent="AntennaWest" unique_id=1843631633]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.92, 0)
+mesh = SubResource("antenna_red_seg")
+
+[node name="Seg5" type="MeshInstance3D" parent="AntennaWest" unique_id=1692882061]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.08, 0)
+mesh = SubResource("antenna_white_seg")
+
+[node name="Ink" type="MeshInstance3D" parent="AntennaWest" unique_id=413177124]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.68, 0)
+material_override = SubResource("antenna_ink_mat")
+mesh = SubResource("antenna_shell")
+
+[node name="AntennaEast" type="Node3D" parent="." unique_id=548761798]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 0)
+
+[node name="Seg0" type="MeshInstance3D" parent="AntennaEast" unique_id=6984257]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.28, 0)
+mesh = SubResource("antenna_red_seg")
+
+[node name="Seg1" type="MeshInstance3D" parent="AntennaEast" unique_id=1648408580]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.44, 0)
+mesh = SubResource("antenna_white_seg")
+
+[node name="Seg2" type="MeshInstance3D" parent="AntennaEast" unique_id=930843501]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, 0)
+mesh = SubResource("antenna_red_seg")
+
+[node name="Seg3" type="MeshInstance3D" parent="AntennaEast" unique_id=1194280602]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.76, 0)
+mesh = SubResource("antenna_white_seg")
+
+[node name="Seg4" type="MeshInstance3D" parent="AntennaEast" unique_id=1577571889]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.92, 0)
+mesh = SubResource("antenna_red_seg")
+
+[node name="Seg5" type="MeshInstance3D" parent="AntennaEast" unique_id=143704750]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.08, 0)
+mesh = SubResource("antenna_white_seg")
+
+[node name="Ink" type="MeshInstance3D" parent="AntennaEast" unique_id=469167276]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.68, 0)
+material_override = SubResource("antenna_ink_mat")
+mesh = SubResource("antenna_shell")
+
+[node name="CordTopWest" type="MeshInstance3D" parent="." unique_id=1990000001]
+transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, -4.675, 2.16, 0)
+mesh = SubResource("cord_mesh")
+
+[node name="CordBottomWest" type="MeshInstance3D" parent="." unique_id=1990000002]
+transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, -4.675, 1.22, 0)
+mesh = SubResource("cord_mesh")
+
+[node name="CordTopEast" type="MeshInstance3D" parent="." unique_id=1990000003]
+transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, 4.675, 2.16, 0)
+mesh = SubResource("cord_mesh")
+
+[node name="CordBottomEast" type="MeshInstance3D" parent="." unique_id=1990000004]
+transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, 4.675, 1.22, 0)
+mesh = SubResource("cord_mesh")
+
+[node name="PostWestShadow" type="MeshInstance3D" parent="." unique_id=1990000005]
+transform = Transform3D(-0.13, 0, -0.094, 0, 1, 0, 0.295, 0, -0.405, -4.535, 0.021, -0.227)
+material_override = SubResource("post_shadow_mat")
+cast_shadow = 0
+mesh = SubResource("QuadMesh_1sn7o")
+
+[node name="PostEastShadow" type="MeshInstance3D" parent="." unique_id=1990000006]
+transform = Transform3D(-0.13, 0, -0.094, 0, 1, 0, 0.295, 0, -0.405, 4.865, 0.021, -0.227)
+material_override = SubResource("post_shadow_mat")
+cast_shadow = 0
+mesh = SubResource("QuadMesh_1sn7o")
+
+[node name="NetBody" type="StaticBody3D" parent="." unique_id=1032262925]
+
+[node name="NetWallShape" type="CollisionShape3D" parent="NetBody" unique_id=2134574280]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.75, 0)
+shape = SubResource("net_wall_shape")
+
+[node name="NetShadow" type="MeshInstance3D" parent="." unique_id=1522849283]
+transform = Transform3D(4.5, 0, 0, 0, 1, 0, 0, 0, 0.35, 0, 0.02, 0)
+material_override = SubResource("ShaderMaterial_ymaxi")
+cast_shadow = 0
+mesh = SubResource("QuadMesh_1sn7o")

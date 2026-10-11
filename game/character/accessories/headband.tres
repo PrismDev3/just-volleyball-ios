@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AccessoryItem" load_steps=3 format=3 uid="uid://fbgreyjuabta"]
+
+[ext_resource type="PackedScene" uid="uid://ce7fuwfu6fjrr" path="res://game/character/accessories/headband.blend" id="1"]
+[ext_resource type="Script" uid="uid://c1rhe1l732pov" path="res://game/character/accessory_item.gd" id="2"]
+
+[resource]
+script = ExtResource("2")
+id = "headband"
+display_name = "headband"
+mesh = ExtResource("1")
+category = "head"
+price = 25
+start_colors = PackedColorArray()
+locked_colors = null

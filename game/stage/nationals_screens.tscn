@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" uid="uid://dscxe1h0m4dif" path="res://game/stage/nationals_screens.gd" id="1"]
+
+[node name="Screens" type="Node3D" unique_id=1762148676]
+script = ExtResource("1")
+
+[node name="ScreenNorth" type="Node3D" parent="." unique_id=106830659]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.5, -27.65)
+
+[node name="ScreenSouth" type="Node3D" parent="." unique_id=365310684]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.5, 27.65)
+
+[node name="ScreenEast" type="Node3D" parent="." unique_id=1210732381]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.65, 9.5, 0)
+
+[node name="ScreenWest" type="Node3D" parent="." unique_id=1054530302]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.65, 9.5, 0)

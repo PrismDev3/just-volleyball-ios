@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Material" uid="uid://cy2vfxfdo8djf" path="res://game/court/floor_gleam_mat.tres" id="1"]
+
+[sub_resource type="QuadMesh" id="quad_gleam"]
+size = Vector2(72, 74)
+orientation = 1
+
+[node name="FloorGleam" type="MeshInstance3D" unique_id=187216936]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.015, 0)
+material_override = ExtResource("1")
+cast_shadow = 0
+mesh = SubResource("quad_gleam")

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://s60avd4ul617"
+path="res://.godot/imported/Rising Combo Hit 02.wav-6f8917d7ded2b7dd5d143497391e96bf.sample"
+
+[deps]
+
+source_file="res://game/sfx/fullstreak/Rising Combo Hit 02.wav"
+dest_files=["res://.godot/imported/Rising Combo Hit 02.wav-6f8917d7ded2b7dd5d143497391e96bf.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=0
+compress/mode=0

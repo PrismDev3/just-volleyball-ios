@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8fakefog0001"]
+
+[ext_resource type="Shader" uid="uid://bqohnm3uhq5k1" path="res://game/court/fake_fog.gdshader" id="1"]
+
+[sub_resource type="ShaderMaterial" id="mat_fog"]
+render_priority = 0
+next_pass = null
+shader = ExtResource("1")
+shader_parameter/fog_color = Color(0.03, 0.03, 0.05, 1)
+shader_parameter/density = 0.6
+shader_parameter/softness = 0.75
+
+[sub_resource type="QuadMesh" id="quad_fog"]
+size = Vector2(12, 12)
+
+[node name="FakeFog" type="MeshInstance3D" unique_id=1071545992]
+material_override = SubResource("mat_fog")
+cast_shadow = 0
+custom_aabb = AABB(-8, -8, -8, 16, 16, 16)
+mesh = SubResource("quad_fog")

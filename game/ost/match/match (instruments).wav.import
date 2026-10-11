@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://l1tc2xe4jvba"
+path="res://.godot/imported/match (instruments).wav-9a92d19af1bc1549696211217b0bd008.sample"
+
+[deps]
+
+source_file="res://game/ost/match/match (instruments).wav"
+dest_files=["res://.godot/imported/match (instruments).wav-9a92d19af1bc1549696211217b0bd008.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=1
+edit/loop_begin=0
+edit/loop_end=6828386
+compress/mode=0

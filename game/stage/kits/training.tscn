@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" uid="uid://bosgy67hbnvx7" path="res://game/stage/kits/training_venue.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://b1bqrwvrfiu1l" path="res://game/stage/school/gymv1.blend" id="2"]
+[ext_resource type="Material" path="res://game/court/training_gleam_mat.tres" id="3"]
+
+[sub_resource type="QuadMesh" id="quad_gleam"]
+size = Vector2(180, 74)
+orientation = 1
+
+[node name="Training" type="Node3D" unique_id=1045921451]
+script = ExtResource("1")
+
+[node name="Walls" parent="." unique_id=891753496 instance=ExtResource("2")]
+transform = Transform3D(0, 0, 1.2071, 0, 0.62, 0, -0.62, 0, 0, 21, 0, 0)
+
+[node name="Roof0" parent="." unique_id=1314919755 instance=ExtResource("2")]
+transform = Transform3D(0.62, 0, 0, 0, 0.62, 0, 0, 0, 0.62, -50, 0, 0)
+
+[node name="Roof1" parent="." unique_id=307861985 instance=ExtResource("2")]
+transform = Transform3D(0.62, 0, 0, 0, 0.62, 0, 0, 0, 0.62, -14.4, 0, 0)
+
+[node name="Roof2" parent="." unique_id=1469760287 instance=ExtResource("2")]
+transform = Transform3D(0.62, 0, 0, 0, 0.62, 0, 0, 0, 0.62, 21.2, 0, 0)
+
+[node name="Roof3" parent="." unique_id=283480814 instance=ExtResource("2")]
+transform = Transform3D(0.62, 0, 0, 0, 0.62, 0, 0, 0, 0.62, 56.8, 0, 0)
+
+[node name="Roof4" parent="." unique_id=762899696 instance=ExtResource("2")]
+transform = Transform3D(0.62, 0, 0, 0, 0.62, 0, 0, 0, 0.62, 92.4, 0, 0)
+
+[node name="FloorGleam" type="MeshInstance3D" parent="." unique_id=291563132]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0.03, 0)
+material_override = ExtResource("3")
+cast_shadow = 0
+mesh = SubResource("quad_gleam")

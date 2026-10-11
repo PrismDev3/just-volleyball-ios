@@ -1,0 +1,95 @@
+[gd_scene load_steps=10 format=3 uid="uid://b2yb17cy4ab17"]
+
+[ext_resource type="PackedScene" uid="uid://b1bqrwvrfiu1l" path="res://game/stage/school/gymv1.blend" id="1"]
+[ext_resource type="Script" uid="uid://bvv6nutt6wjly" path="res://game/stage/kits/painted_preview.gd" id="2"]
+[ext_resource type="PackedScene" path="res://game/court/floor_gleam.tscn" id="3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tm5kw"]
+shading_mode = 0
+albedo_color = Color(0.74, 0.54, 0.32, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fg5cr"]
+size = Vector3(117.6, 0.04, 117.6)
+
+[sub_resource type="Environment" id="Environment_school"]
+background_mode = 1
+background_color = Color(0.62, 0.68, 0.78, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.82, 0.82, 0.86, 1)
+ambient_light_energy = 0.55
+tonemap_mode = 2
+tonemap_exposure = 0.95
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_guide"]
+shading_mode = 0
+albedo_color = Color(0.2, 1, 0.4, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_guide_x"]
+size = Vector3(15.2, 0.03, 0.12)
+
+[sub_resource type="BoxMesh" id="BoxMesh_guide_z"]
+size = Vector3(0.12, 0.03, 27.2)
+
+[node name="School" type="Node3D" unique_id=695145524]
+
+[node name="Backdrop" type="Node3D" parent="." unique_id=2118838525]
+
+[node name="EnvFloor" type="Node3D" parent="Backdrop" unique_id=1575209025]
+
+[node name="EnvFloor" type="MeshInstance3D" parent="Backdrop/EnvFloor" unique_id=502007145]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.12, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_tm5kw")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_fg5cr")
+
+[node name="Gym" parent="." unique_id=48900061 instance=ExtResource("1")]
+transform = Transform3D(0.62, 0, 0, 0, 0.62, 0, 0, 0, 0.62, 0, 0, 0)
+
+[node name="Court" parent="Gym/Gymnasium " parent_id_path=PackedInt32Array(48900061, 988383354) index="0" unique_id=16285444]
+visible = false
+
+[node name="EditorPreview" type="Node3D" parent="." unique_id=28290889]
+script = ExtResource("2")
+accent = 0
+
+[node name="PreviewEnv" type="WorldEnvironment" parent="EditorPreview" unique_id=924161124]
+environment = SubResource("Environment_school")
+
+[node name="PreviewSun" type="DirectionalLight3D" parent="EditorPreview" unique_id=2051210835]
+transform = Transform3D(0.7071, -0.5, 0.5, 0, 0.7071, 0.7071, -0.7071, -0.5, 0.5, 0, 12, 0)
+light_color = Color(1, 0.96, 0.88, 1)
+light_energy = 0.45
+shadow_enabled = true
+
+[node name="CourtGuide" type="Node3D" parent="EditorPreview" unique_id=170337844]
+
+[node name="Court6v6_N" type="MeshInstance3D" parent="EditorPreview/CourtGuide" unique_id=412295133]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 13.6)
+material_override = SubResource("StandardMaterial3D_guide")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_guide_x")
+
+[node name="Court6v6_S" type="MeshInstance3D" parent="EditorPreview/CourtGuide" unique_id=1098022595]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, -13.6)
+material_override = SubResource("StandardMaterial3D_guide")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_guide_x")
+
+[node name="Court6v6_E" type="MeshInstance3D" parent="EditorPreview/CourtGuide" unique_id=1531988461]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.6, 0.08, 0)
+material_override = SubResource("StandardMaterial3D_guide")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_guide_z")
+
+[node name="Court6v6_W" type="MeshInstance3D" parent="EditorPreview/CourtGuide" unique_id=1243725049]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6, 0.08, 0)
+material_override = SubResource("StandardMaterial3D_guide")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_guide_z")
+
+[node name="Sunlight" type="Node3D" parent="." unique_id=1544777355]
+
+[node name="FloorGleam" parent="Sunlight" unique_id=39096870 instance=ExtResource("3")]
+
+[editable path="Gym"]

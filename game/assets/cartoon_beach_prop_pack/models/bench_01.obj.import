@@ -1,0 +1,23 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://h1uvaehxsvam"
+path="res://.godot/imported/bench_01.obj-bafe21c705756db3ede7bd53b4c3f102.mesh"
+
+[deps]
+
+source_file="res://game/assets/cartoon_beach_prop_pack/models/bench_01.obj"
+dest_files=["res://.godot/imported/bench_01.obj-bafe21c705756db3ede7bd53b4c3f102.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=true

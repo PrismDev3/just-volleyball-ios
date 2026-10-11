@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AccessoryItem" load_steps=3 format=3 uid="uid://c21aja1w4dj0w"]
+
+[ext_resource type="PackedScene" uid="uid://bvb6o0pgtlby8" path="res://game/character/accessories/sleekvisor.blend" id="1"]
+[ext_resource type="Script" uid="uid://c1rhe1l732pov" path="res://game/character/accessory_item.gd" id="2"]
+
+[resource]
+script = ExtResource("2")
+id = "sleekvisor"
+display_name = "sleek visor"
+mesh = ExtResource("1")
+price = 25
+start_colors = PackedColorArray(0.1148968, 0.11489681, 0.1148968, 1, 1, 1, 1, 1)
+locked_colors = PackedInt32Array(2)

@@ -1,0 +1,12 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://c830rosol2wy5"
+path="res://.godot/imported/banner.blend-88a1d56c02d2ec55262001fed655cd6a.scn"
+
+[deps]
+
+source_file="res://game/stage/nationals/banner.blend"
+dest_files=["res://.godot/imported/banner.blend-88a1d56c02d2ec55262001fed655cd6a.scn"]

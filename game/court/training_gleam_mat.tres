@@ -1,0 +1,30 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3]
+
+[ext_resource type="Shader" uid="uid://b26vdaahme0mj" path="res://game/court/floor_gleam.gdshader" id="1"]
+
+[resource]
+render_priority = -1
+next_pass = null
+shader = ExtResource("1")
+shader_parameter/intensity = 0.85
+shader_parameter/fresnel_power = 1.6
+shader_parameter/blur = 0.9
+shader_parameter/floor_y = 0.0
+shader_parameter/window_color = Color(1, 0.94, 0.82, 1)
+shader_parameter/window_amt = 0.0
+shader_parameter/wall_x = 32.4
+shader_parameter/win_y0 = 8.7
+shader_parameter/win_y1 = 10.7
+shader_parameter/win_z0 = -35.0
+shader_parameter/win_z1 = 22.0
+shader_parameter/win_pitch = 8.1
+shader_parameter/win_w = 3.6
+shader_parameter/panel_color = Color(1, 0.97, 0.9, 1)
+shader_parameter/panel_amt = 1.0
+shader_parameter/ceil_y = 16.3
+shader_parameter/mirror_squash = 0.12
+shader_parameter/base_visible = 0.5
+shader_parameter/panel_origin = Vector2(-80.9, -25.1)
+shader_parameter/panel_pitch = Vector2(17.8, 12.3)
+shader_parameter/panel_size = Vector2(6.8, 4.1)
+shader_parameter/panel_extent = Vector2(180, 56)

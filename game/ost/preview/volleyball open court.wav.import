@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cgjnt0tbeqoqg"
+path="res://.godot/imported/volleyball open court.wav-b8937763ca3fbf8896676c1b59967873.sample"
+
+[deps]
+
+source_file="res://game/ost/preview/volleyball open court.wav"
+dest_files=["res://.godot/imported/volleyball open court.wav-b8937763ca3fbf8896676c1b59967873.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=0
+compress/mode=0

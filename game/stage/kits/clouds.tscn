@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=4]
+
+[ext_resource type="Shader" uid="uid://bklxyxgu8loqa" path="res://game/court/cloud_floor.gdshader" id="1"]
+[ext_resource type="Script" uid="uid://b8uwpshquoqf" path="res://game/court/cloud_ripples.gd" id="2"]
+[ext_resource type="PackedScene" path="res://game/court/anime_sky_env.tscn" id="3"]
+
+[sub_resource type="ShaderMaterial" id="mat_cloud_floor"]
+render_priority = 0
+next_pass = null
+shader = ExtResource("1")
+shader_parameter/top_color = Color(0.08, 0.4, 0.96, 1)
+shader_parameter/horizon_color = Color(0.42, 0.72, 1, 1)
+shader_parameter/cloud_color = Color(1, 1, 1, 1)
+shader_parameter/cloud_shade = Color(0.74, 0.83, 0.96, 1)
+shader_parameter/sun_color = Color(1, 0.97, 0.88, 1)
+shader_parameter/sun_dir = Vector3(-0.45, 0.62, 0.15)
+shader_parameter/cloud_cover = 0.6
+shader_parameter/cloud_scale = 1.05
+shader_parameter/cloud_drift = 0.004
+shader_parameter/cloud_softness = 0.055
+shader_parameter/deep_color = Color(0.16, 0.42, 0.86, 1)
+shader_parameter/fresnel_power = 3.0
+shader_parameter/fresnel_min = 0.35
+shader_parameter/swell_amp = 0.035
+shader_parameter/swell_scale = 0.04
+shader_parameter/swell_speed = 0.12
+shader_parameter/haze_start = 60.0
+shader_parameter/haze_end = 900.0
+shader_parameter/reflect_tex = null
+shader_parameter/reflect_on = false
+shader_parameter/reflectivity = 0.85
+shader_parameter/reflect_blur = 3.0
+shader_parameter/reflect_near = 0.6
+shader_parameter/reflect_far = 2.6
+shader_parameter/feet = PackedVector4Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/ripple_count = 0
+shader_parameter/ripples = PackedVector4Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/ripple_speed = 1.0
+shader_parameter/ripple_width = 0.16
+shader_parameter/ripple_life = 1.5
+shader_parameter/ripple_bend = 0.45
+shader_parameter/ripple_glow = 0.07
+
+[sub_resource type="PlaneMesh" id="plane_cloud_floor"]
+size = Vector2(6000, 6000)
+
+[node name="Clouds" type="Node3D" unique_id=1615176301]
+
+[node name="MirrorFloor" type="MeshInstance3D" parent="." unique_id=1003310183]
+material_override = SubResource("mat_cloud_floor")
+cast_shadow = 0
+mesh = SubResource("plane_cloud_floor")
+
+[node name="Ripples" type="Node3D" parent="." unique_id=688364265]
+script = ExtResource("2")
+
+[node name="AnimeSkyEnv" parent="." unique_id=19775993 instance=ExtResource("3")]

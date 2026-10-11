@@ -1,0 +1,23 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://pg3r3nrqjtbv"
+path="res://.godot/imported/chair_03.obj-dcb7f7ea9711658ef4f41366c2164cda.mesh"
+
+[deps]
+
+source_file="res://game/assets/cartoon_beach_prop_pack/models/chair_03.obj"
+dest_files=["res://.godot/imported/chair_03.obj-dcb7f7ea9711658ef4f41366c2164cda.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=true

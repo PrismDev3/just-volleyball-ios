@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" uid="uid://bonuc3ft6dxbh" path="res://game/stage/nationals_perimeter.gd" id="1"]
+
+[node name="Perimeter" type="Node3D" unique_id=716057541]
+script = ExtResource("1")

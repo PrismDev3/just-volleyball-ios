@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" uid="uid://xwbay8pwc7bk" path="res://game/ui/stats_board.gd" id="1"]
+
+[node name="StatsBoard" type="VBoxContainer" unique_id=185077612]
+script = ExtResource("1")

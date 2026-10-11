@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://cm4d6cusvs34t"]
+
+[ext_resource type="Script" uid="uid://d3ootjh5wpem0" path="res://game/stage/design_guide.gd" id="1"]
+
+[sub_resource type="StandardMaterial3D" id="sand"]
+albedo_color = Color(0.93, 0.86, 0.7, 1)
+
+[sub_resource type="PlaneMesh" id="ground"]
+material = SubResource("sand")
+size = Vector2(160, 160)
+
+[sub_resource type="StandardMaterial3D" id="sea_mat"]
+albedo_color = Color(0.2, 0.55, 0.75, 1)
+
+[sub_resource type="BoxMesh" id="sea"]
+material = SubResource("sea_mat")
+size = Vector3(160, 0.1, 40)
+
+[node name="Beach" type="Node3D" unique_id=20364175]
+
+[node name="Ground" type="MeshInstance3D" parent="." unique_id=685676943]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03, 0)
+mesh = SubResource("ground")
+
+[node name="Sea" type="MeshInstance3D" parent="." unique_id=532838553]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, -60)
+mesh = SubResource("sea")
+
+[node name="DesignGuide" type="Node3D" parent="." unique_id=549852424]
+script = ExtResource("1")

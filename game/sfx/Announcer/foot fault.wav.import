@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d2mrgy1km0j3d"
+path="res://.godot/imported/foot fault.wav-f37c73140e31d8f9a0be3978c5533b5f.sample"
+
+[deps]
+
+source_file="res://game/sfx/Announcer/foot fault.wav"
+dest_files=["res://.godot/imported/foot fault.wav-f37c73140e31d8f9a0be3978c5533b5f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=0
+compress/mode=0

@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="BallPhysics" load_steps=2 format=3 uid="uid://ballphysics01"]
+
+[ext_resource type="Script" uid="uid://qiqqckxkmrli" path="res://game/ball/ball_physics.gd" id="1"]
+
+[resource]
+script = ExtResource("1")

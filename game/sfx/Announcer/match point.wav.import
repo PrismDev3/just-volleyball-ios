@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cerdssu08u5b0"
+path="res://.godot/imported/match point.wav-6f98a20f1b1727318a55439be239e6f9.sample"
+
+[deps]
+
+source_file="res://game/sfx/Announcer/match point.wav"
+dest_files=["res://.godot/imported/match point.wav-6f98a20f1b1727318a55439be239e6f9.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=0
+compress/mode=0

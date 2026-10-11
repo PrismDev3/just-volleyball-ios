@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AccessoryItem" load_steps=3 format=3 uid="uid://b46s7cd77fv1b"]
+
+[ext_resource type="PackedScene" uid="uid://cgjqmit6c057q" path="res://game/character/accessories/punk_glasses.blend" id="1"]
+[ext_resource type="Script" uid="uid://c1rhe1l732pov" path="res://game/character/accessory_item.gd" id="2"]
+
+[resource]
+script = ExtResource("2")
+id = "punk_glasses"
+display_name = "punk glasses"
+mesh = ExtResource("1")
+price = 25
+start_colors = PackedColorArray(1, 0.17000002, 0.17000002, 1)
+locked_colors = null

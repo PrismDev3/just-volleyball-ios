@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="StageConfig" load_steps=2 format=3]
+
+[ext_resource type="Script" uid="uid://dl8iqyeimdrlj" path="res://game/stage/stage_config.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+sky_shader = null
