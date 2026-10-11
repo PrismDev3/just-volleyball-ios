@@ -92,6 +92,43 @@ Details that matter on a phone:
 - The desktop GPU/driver notice is skipped on mobile: it exists to suggest
   `--rendering-driver` flags and driver downloads, and a phone has neither. The
   boot chain goes straight to the intro.
+- The stick's base is a disc, like the rim and the knob around it. It used to be
+  built with `disc_box` at its default corner radius of 0, which draws square
+  corners, so a round stick sat on a flat card. The pad also has no "move" label
+  under it any more - the glyphs on the buttons carry that on their own.
+
+### Phone-facing behaviour
+
+- **Replays are tapped through.** The replay banner asked for the accept key,
+  which a phone does not have, so the vote could not be cast there at all. Any
+  tap during a replay now casts it, and the banner names the gesture the device
+  actually has ("tap to skip" on a phone, "space to skip" on a desktop). A tap
+  also pauses and resumes inside the replay viewer.
+- **Exit really exits.** `SceneTree.quit()` only stops the main loop, and iOS
+  answers by leaving the app alive on its last frame - that is what a quit button
+  that "freezes for a second instead of closing" is. `GameConfig.quit_app()`
+  saves, then ends the process, and every exit path (menu confirm, pause menu,
+  launch gate) goes through it.
+- **No frozen yellow.** The yellow slab is the transition cover, and the scene
+  change used to be loaded synchronously underneath it: the main thread sat
+  inside the loader, so the cover could not animate and a big venue read as a
+  hang. Scenes now load on a worker thread while the cover runs a progress bar,
+  and the cover holds until the incoming scene has been installed and drawn, so
+  the first look at a new screen is a finished one. The sweeps themselves are
+  shorter too (0.33 s in, 0.2 s out).
+- **Shorter intro.** The boot intro is trimmed to about half its length and no
+  longer waits out the whole audio sting after the animation has finished. Taps
+  skip it, from touch events rather than only from the emulated mouse button.
+- **Saving.** Settings, profile and career are flushed when the app is
+  backgrounded (`NOTIFICATION_APPLICATION_PAUSED`, the only leaving notice a
+  phone gives: there is no close request on iOS or Android, and a suspended app
+  can be killed without another word) and before quitting.
+- **Easier to start on touch.** A phone that has never been asked starts on the
+  easy CPU preset with aim assist on, because the desktop defaults were the
+  wrong starting point for a thumb. It happens once, only on touch devices, and
+  only when neither setting was ever touched, so a deliberate choice always
+  wins and existing installs are migrated exactly once. Both stay ordinary
+  settings: difficulty in match setup, aim assist in Settings -> Gameplay.
 
 ## How the build works
 
@@ -102,13 +139,19 @@ older Xcode stops at the link step):
 1. Install Godot 4.7.2 (universal editor) and the matching `ios.zip` export
    template, both cached between runs.
 2. `godot --headless --import` - imports 10k+ assets from scratch.
-3. `godot --headless --export-release iOS build/volleyball.ipa` - the iOS
+3. `tools/verify_transitions.gd` runs headless as a gate: every project script
+   compiles, the movement wheel's base is a disc, the touch preset flag
+   round-trips through the settings file, a synchronous scene load is measured
+   stalling the main thread while the threaded one is measured not to, and a
+   transition is shown to keep its cover up until the incoming scene lands. A
+   non-zero exit stops the build, so none of that can regress silently.
+4. `godot --headless --export-release iOS build/volleyball.ipa` - the iOS
    preset sets `application/export_project_only=true`, so this writes
    `build/volleyball.pck` and a complete `build/volleyball.xcodeproj` and stops
    before Godot would try to sign anything.
-4. `xcodebuild -sdk iphoneos ... CODE_SIGNING_ALLOWED=NO` - builds the app
+5. `xcodebuild -sdk iphoneos ... CODE_SIGNING_ALLOWED=NO` - builds the app
    without a certificate or profile.
-5. Zip the `.app` into `Payload/` to get an `.ipa`, verify the binary, the
+6. Zip the `.app` into `Payload/` to get an `.ipa`, verify the binary, the
    packed game data and the touch-control script are actually inside it, then
    upload it as an artifact. Pushing a `v*` tag publishes it as a GitHub
    Release.
@@ -186,4 +229,9 @@ game/ui/touch/touch_controls.gd on-screen pad
 game/ui/style/ui_style.gd      shared UI kit the pad draws with
 .assets/                       original 3D sources (.glb/.obj) - required to reimport
 .github/workflows/ios.yml      the iOS pipeline
+tools/verify_transitions.gd    headless gate CI runs before every export
+tools/audit_pck.py             reads a .pck directory and fails on empty payloads
 ```
+
+Building tools are excluded from the export (`tools/*` in `exclude_filter`), so
+none of them ship inside the pack.

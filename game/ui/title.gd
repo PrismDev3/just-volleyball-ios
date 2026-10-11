@@ -1148,6 +1148,8 @@ func _unhandled_input(event: InputEvent) -> void :
 		pressed = event.pressed
 	elif event is InputEventMouseButton:
 		pressed = event.pressed
+	elif event is InputEventScreenTouch:
+		pressed = (event as InputEventScreenTouch).pressed
 	if not pressed:
 		return
 	get_viewport().set_input_as_handled()
@@ -1158,6 +1160,10 @@ func _is_press(event: InputEvent) -> bool:
 		return event.pressed and not event.echo
 	if event is InputEventJoypadButton or event is InputEventMouseButton:
 		return event.pressed
+	if event is InputEventScreenTouch:
+		# Touch devices send an emulated mouse button too, but the taps that skip
+		# the opening cuts must not depend on that emulation being on.
+		return (event as InputEventScreenTouch).pressed
 	return false
 
 func _leave() -> void :

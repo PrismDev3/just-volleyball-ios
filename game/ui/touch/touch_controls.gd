@@ -85,7 +85,6 @@ var _root: Control
 var _stick_base: Panel
 var _stick_rim: Panel
 var _stick_knob: Panel
-var _stick_hint: Label
 var _stick_center: = Vector2.ZERO
 var _stick_travel: = 1.0
 var _stick_grab: = 1.0
@@ -300,13 +299,6 @@ func _build() -> void :
 	_stick_knob.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_root.add_child(_stick_knob)
 
-	_stick_hint = Label.new()
-	_stick_hint.name = "StickHint"
-	_stick_hint.text = "move"
-	_stick_hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	UiStyle.outlined_label(_stick_hint, 13)
-	_root.add_child(_stick_hint)
-
 	for spec in BUTTONS:
 		var btn: = Button.new()
 		btn.name = "T_" + String(spec.action)
@@ -358,13 +350,14 @@ func _layout() -> void :
 	_place(_stick_base, _stick_center, base_r)
 	_place(_stick_rim, _stick_center, base_r)
 	_place(_stick_knob, _stick_center, knob_r)
-	_style(_stick_base, UiStyle.disc_box(Color(UiStyle.INK, 0.20)))
+	# The base is the same disc as the rim and the knob. It used to be built
+	# with `disc_box` at its default radius of 0, which draws square corners,
+	# so a round stick sat on a flat card. Same helper, real radius.
+	_style(_stick_base, UiStyle.disc_box(Color(UiStyle.INK, 0.20), 
+		Color(0, 0, 0, 0), 0, base_r))
 	_style(_stick_rim, UiStyle.disc_box(Color(0, 0, 0, 0), 
 		Color(1, 1, 1, 0.42), 3, base_r))
 	_style(_stick_knob, UiStyle.disc_box(Color.WHITE, UiStyle.INK, 3, knob_r))
-	_stick_hint.size = Vector2(base_r * 2.8, 20.0)
-	_stick_hint.position = Vector2(_stick_center.x - base_r * 1.4, 
-		_stick_center.y + base_r + 2.0)
 	_stick_knob.position = _stick_center - _stick_knob.size * 0.5
 
 	for spec in _buttons:

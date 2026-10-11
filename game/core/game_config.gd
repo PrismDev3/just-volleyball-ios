@@ -46,6 +46,7 @@ func _ready() -> void :
 	apply_msaa.call_deferred()
 	_hook_window_resize.call_deferred()
 	character = CharacterConfig.load_local()
+	_apply_touch_defaults()
 
 
 
@@ -416,23 +417,95 @@ func goto_scene(path: String) -> void :
 
 	_do_scene_change.call_deferred(path)
 
+# True from the moment a transition is asked for until the scene that replaces
+# the old one has drawn a frame. [UiWipe] keeps its slabs up for exactly this
+# long, so the cover never lifts on a scene that is not on screen yet.
+func scene_change_pending() -> bool:
+	return _scene_pending != ""
+
+
+# 0..1 while a cold scene loads, -1 while nothing is loading.
+func scene_load_progress() -> float:
+	return _scene_progress
+
+var _scene_progress: = -1.0
+
 func _do_scene_change(path: String) -> void :
 	var tree: = Engine.get_main_loop() as SceneTree
-	if tree != null:
-		var pre: PackedScene = null
-		if _preloaded.has(path):
-			pre = _preloaded[path] as PackedScene
-			_preloaded.erase(path)
-		elif path in _preload_queue:
-			# Still loading: block on the running request instead of starting a
-			# second load of the same path (same cost as a plain sync load).
-			pre = ResourceLoader.load_threaded_get(path) as PackedScene
-		_preload_queue.erase(path)
-		if pre != null:
-			tree.change_scene_to_packed(pre)
-		else:
-			tree.change_scene_to_file(path)
+	var pre: PackedScene = null
+	if _preloaded.has(path):
+		pre = _preloaded[path] as PackedScene
+		_preloaded.erase(path)
+	else:
+		# A cold scene used to be loaded right here, synchronously, with the
+		# transition cover already up. The main thread then sat inside the loader
+		# for the whole load, so a big venue froze on solid yellow: no frames, no
+		# input, nothing to look at but the slab. Loading on a worker thread and
+		# yielding here instead lets the wipe draw a live progress bar.
+		pre = await _load_async(path)
+	if tree == null:
+		_scene_pending = ""
+		return
+	if pre != null:
+		tree.change_scene_to_packed(pre)
+	else:
+		tree.change_scene_to_file(path)
+	# The swap is not the end of the wait: the incoming scene builds its arena in
+	# _ready and compiles shaders over the first frames it draws. Hold the cover
+	# across those too, so the player's first look at a new screen is a finished
+	# one rather than a half-built court and a stutter.
+	#
+	# The swap is also deferred to the end of the current frame, so the first wait
+	# is the frame that installs the scene, and the next two are the frames it
+	# would otherwise be seen on. Plain frames rather than
+	# RenderingServer.frame_post_draw on purpose: that signal is not emitted in
+	# every configuration (a headless run never sees it), and a cover waiting for
+	# a signal that never arrives is the freeze this whole path exists to remove.
+	await tree.process_frame
+	await tree.process_frame
+	await tree.process_frame
 	_scene_pending = ""
+
+
+
+# Threaded scene load that never blocks the main thread. Returns a fully loaded
+# [PackedScene], or null when even a synchronous load could not produce one.
+func _load_async(path: String) -> PackedScene:
+	var tree: = Engine.get_main_loop() as SceneTree
+	if tree == null:
+		return null
+	if not (path in _preload_queue):
+		if ResourceLoader.load_threaded_request(path) != OK:
+			# No threaded loader for this resource; the plain load is all that is
+			# left. Rare, and it only happens for a scene nothing preloaded.
+			return ResourceLoader.load(path) as PackedScene
+		_preload_queue.append(path)
+	_scene_progress = 0.0
+	while true:
+		# _process drains finished preloads into _preloaded. Take that result
+		# first, or the same load would be retrieved twice.
+		if _preloaded.has(path):
+			var held: PackedScene = _preloaded[path]
+			_preloaded.erase(path)
+			_preload_queue.erase(path)
+			_scene_progress = -1.0
+			return held
+		var progress: Array = []
+		var status: = ResourceLoader.load_threaded_get_status(path, progress)
+		if progress.size() > 0:
+			_scene_progress = float(progress[0])
+		match status:
+			ResourceLoader.THREAD_LOAD_LOADED:
+				_preload_queue.erase(path)
+				_scene_progress = -1.0
+				return ResourceLoader.load_threaded_get(path) as PackedScene
+			ResourceLoader.THREAD_LOAD_FAILED, ResourceLoader.THREAD_LOAD_INVALID_RESOURCE:
+				_preload_queue.erase(path)
+				_scene_progress = -1.0
+				push_warning("threaded load of %s failed; loading it synchronously" % path)
+				return ResourceLoader.load(path) as PackedScene
+		await tree.process_frame
+	return null
 
 # Scene preloading: kick off loading the next scene while the current screen
 # is still interactive (the title waits for input for seconds), so the wipe
@@ -495,8 +568,27 @@ func flush_saves() -> void :
 	if has_node("/root/Career"):
 		get_node("/root/Career").save_now()
 
+
+
+# Leaving the game has to actually end the process on a phone. SceneTree.quit()
+# only stops the main loop, and iOS responds by leaving the app alive on its
+# last frame -- which is exactly what an exit button that "freezes for a second
+# instead of closing" looks like. Save first, then end the process outright.
+func quit_app() -> void :
+	flush_saves()
+	if OS.get_name() == "iOS" and OS.kill(OS.get_process_id()) == OK:
+		return
+	var tree: = Engine.get_main_loop() as SceneTree
+	if tree != null:
+		tree.quit()
+
 func _notification(what: int) -> void :
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		flush_saves()
+	elif what == NOTIFICATION_APPLICATION_PAUSED:
+		# The only leaving notice a phone gives. There is no close request on iOS
+		# or Android, and a suspended app can be killed without another word, so
+		# this is the last chance to get progress onto disk.
 		flush_saves()
 
 
@@ -515,6 +607,7 @@ func _save_settings() -> void :
 			"online_terms_accepted": online_terms_accepted, 
 			"online_terms_version": online_terms_version, 
 			"aim_assist": aim_assist, "hardware_cursor": hardware_cursor, 
+			"assist_defaulted": _assist_defaulted, 
 			"touch_controls": touch_controls, 
 			"show_own_name": show_own_name, "touch_highlight": touch_highlight, 
 			"camera_shake": camera_shake, "rumble": rumble, 
@@ -551,6 +644,24 @@ func _save_settings() -> void :
 		f.close()
 	settings_saved.emit()
 
+# A phone has no keyboard and no mouse, so the settings that make the desktop
+# game a fair fight are the wrong starting point there. One-time, on touch
+# devices only, and only for a player who never touched either setting: anyone
+# who deliberately picked a difficulty or switched aim assist keeps their
+# choice. The flag is part of the saved settings, so this can never re-run and
+# fight the player over their own settings later.
+func _apply_touch_defaults() -> void :
+	if not OS.has_feature("mobile") or _assist_defaulted:
+		return
+	if difficulty == 1 and not aim_assist:
+		difficulty = 0
+		aim_assist = true
+		CpuSlots.set_all_diff(local_cpus, difficulty)
+	_assist_defaulted = true
+	_save_settings()
+
+var _assist_defaulted: = false
+
 func _load_settings() -> void :
 	if not FileAccess.file_exists(_settings_path):
 		_migrate_settings_cfg()
@@ -584,6 +695,7 @@ func _load_settings() -> void :
 	online_terms_accepted = bool(game.get("online_terms_accepted", false))
 	online_terms_version = int(game.get("online_terms_version", 0))
 	aim_assist = bool(game.get("aim_assist", false))
+	_assist_defaulted = bool(game.get("assist_defaulted", false))
 	hardware_cursor = bool(game.get("hardware_cursor", false))
 	touch_controls = clampi(int(game.get("touch_controls", 0)), 0, 2)
 	show_own_name = bool(game.get("show_own_name", false))

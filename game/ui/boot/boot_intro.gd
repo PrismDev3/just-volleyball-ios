@@ -24,15 +24,20 @@ const SETTINGS_PANEL: = preload("res://game/ui/settings_panel.tscn")
 
 
 
-@export var initial_black_hold: float = 0.5
+# The intro is the longest thing a player sits through before the first menu,
+# and it says nothing the game needs -- two credits and a logo. Every stage of
+# it is trimmed here rather than cut, so it still reads as a title sequence;
+# the tail (the walk to the fade) is shortened separately in _ready, where the
+# audio sting no longer holds the screen after the animation has finished.
+@export var initial_black_hold: float = 0.25
 
-@export var pixel_resolve_time: float = 1.2
+@export var pixel_resolve_time: float = 0.7
 
-@export var resolve_hold: float = 0.4
+@export var resolve_hold: float = 0.2
 
-@export var burst_time: float = 0.8
+@export var burst_time: float = 0.5
 
-@export var color_burst_time: float = 1.4
+@export var color_burst_time: float = 0.9
 
 
 @export var flash_peak: float = 0.65
@@ -40,13 +45,18 @@ const SETTINGS_PANEL: = preload("res://game/ui/settings_panel.tscn")
 
 @export var wave_start_amp: float = 13.0
 @export var wave_start_freq: float = 2.6
-@export var wave_settle_time: float = 2.4
+@export var wave_settle_time: float = 1.2
 
-@export var post_burst_hold: float = 1.1
+@export var post_burst_hold: float = 0.5
 
-@export var screen_fade_out: float = 0.6
+@export var screen_fade_out: float = 0.35
 
-@export var post_fade_hold: float = 0.25
+@export var post_fade_hold: float = 0.12
+
+# Ceiling on how much of the audio sting the outro waits for. The sting is
+# longer than the animation, so waiting for all of it meant staring at the
+# finished logo for seconds after it had finished playing.
+@export var sting_hold_max: float = 1.0
 
 
 
@@ -86,6 +96,10 @@ func _unhandled_input(event: InputEvent) -> void :
 		pressed = event.pressed
 	elif event is InputEventMouseButton:
 		pressed = event.pressed
+	elif event is InputEventScreenTouch:
+		# Touch devices also deliver an emulated mouse button, but skipping has
+		# to work even where that is switched off.
+		pressed = (event as InputEventScreenTouch).pressed
 	if not pressed:
 		return
 	get_viewport().set_input_as_handled()
@@ -109,8 +123,11 @@ func _go() -> void :
 		return
 	_left = true
 	UiStyle.dark = GameConfig.dark_theme
-	get_tree().root.add_child(WHITE_COVER.new())
+	# Start the change first and raise the cover immediately after, still in this
+	# frame: the cover waits for the pending change to land (white_cover.gd), so
+	# it has to be able to see it before it starts holding.
 	GameConfig.goto_scene(NEXT_SCENE)
+	get_tree().root.add_child(WHITE_COVER.new())
 
 
 func _beat(seconds: float) -> bool:
@@ -262,7 +279,7 @@ func _ready() -> void :
 
 	var sting_elapsed: = float(Time.get_ticks_msec() - sting_start) / 1000.0
 	var sting_len: float = audio_player.stream.get_length() if audio_player.stream else 0.0
-	var rest: = maxf(post_burst_hold, sting_len - sting_elapsed + 0.15)
+	var rest: = maxf(post_burst_hold, minf(sting_len - sting_elapsed + 0.15, sting_hold_max))
 	if not await _beat(rest):
 		return
 

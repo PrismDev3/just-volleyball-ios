@@ -1302,8 +1302,9 @@ func _build_bars() -> void :
 	quit.pressed.connect( func():
 		UiStyle.confirm(self, "quit the game?", "", 
 			func():
-				GameConfig.flush_saves()
-				get_tree().quit(), "quit", "stay", "exit"))
+				# Saves first, then really ends the process (iOS keeps an app alive
+				# on its last frame after SceneTree.quit()).
+				GameConfig.quit_app(), "quit", "stay", "exit"))
 	top.add_child(quit)
 	var logo: = TextureRect.new()
 	logo.texture = LOGO

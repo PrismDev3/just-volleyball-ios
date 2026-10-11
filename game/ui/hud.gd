@@ -2064,8 +2064,10 @@ func set_replay_banner(shown: bool, votes: int, needed: int) -> void :
 	box.visible = shown
 	if shown:
 		var sub: Label = box.find_child("Sub", true, false)
-		sub.text = "space to skip    %d/%d" % [votes, needed] if needed > 1\
-		else "space to skip"
+		# Name the gesture that exists on this device: a phone has no accept key,
+		# and telling a phone player to press space is the same as saying nothing.
+		var how: = "tap to skip" if OS.has_feature("mobile") else "space to skip"
+		sub.text = ("%s    %d/%d" % [how, votes, needed]) if needed > 1 else how
 
 
 

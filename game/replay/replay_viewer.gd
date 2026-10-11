@@ -783,7 +783,8 @@ func _update_hint() -> void :
 	if _free_cam:
 		_hint.text = "free cam   wasd to fly   q and e for height   hold right mouse to look   arrows to scrub"
 	else:
-		_hint.text = "c changes camera   f opens free cam   space pauses   arrows scrub   h hides the ui"
+		_hint.text = "c changes camera   f opens free cam   %s pauses   arrows scrub   h hides the ui"\
+			% ("tap" if OS.has_feature("mobile") else "space")
 
 func _cycle_follow() -> void :
 	_follow += 1
@@ -1057,6 +1058,17 @@ func _update_buttons() -> void :
 
 func _unhandled_input(event: InputEvent) -> void :
 	if not _transport.visible:
+		return
+	# A phone has no space bar, so a tap is the play/pause toggle there. The
+	# transport buttons and the scrub bar are Controls, so they take their own
+	# taps before this sees them.
+	if event is InputEventScreenTouch and (event as InputEventScreenTouch).pressed:
+		_toggle_play()
+		return
+	if event is InputEventMouseButton\
+	and (event as InputEventMouseButton).button_index == MOUSE_BUTTON_LEFT\
+	and (event as InputEventMouseButton).pressed:
+		_toggle_play()
 		return
 	if event.is_action_pressed("ui_cancel"):
 		if _ui_hidden:

@@ -126,6 +126,25 @@ jobs:
             exit 1
           fi
 
+      # Runs the same gate a human runs by hand:
+      #   godot --headless --script tools/verify_transitions.gd
+      # It caught two real bugs while the mobile batch was written -- an edit
+      # that joined two statements, and a transition that waited on a signal a
+      # headless run never emits -- so it gates the export rather than the
+      # release notes.
+      - name: Verify transitions and touch fixes
+        run: |
+          set -euo pipefail
+          if ! "$GODOT" --headless --path "$GITHUB_WORKSPACE" \
+                --script "$GITHUB_WORKSPACE/tools/verify_transitions.gd" \
+                > "$RUNNER_TEMP/verify.log" 2>&1; then
+            echo "::error::headless verification failed"
+            grep -E "^(===|  |RESULT|FAILURES)" "$RUNNER_TEMP/verify.log" || true
+            tail -60 "$RUNNER_TEMP/verify.log"
+            exit 1
+          fi
+          grep -E "^(=== |  |RESULT)" "$RUNNER_TEMP/verify.log" || true
+
       - name: Export Xcode project
         run: |
           set -euo pipefail

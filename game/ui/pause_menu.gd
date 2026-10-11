@@ -154,7 +154,9 @@ func _ready() -> void :
 		_set_paused(false)
 		if Net.active:
 			Net.leave()
-		get_tree().quit())
+		# quit_app, not get_tree().quit(): on a phone the latter only stops the
+		# main loop and leaves the last frame frozen on screen.
+		GameConfig.quit_app())
 
 
 	UiStyle.wash(self)

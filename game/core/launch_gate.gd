@@ -159,7 +159,7 @@ static func _v(verdict: String, detail: String) -> Dictionary:
 static func show_block(host: Node, result: Dictionary) -> void :
 	var verdict: String = result.get("verdict", VERDICT_NO_STEAM)
 	if verdict == VERDICT_RESTART:
-		host.get_tree().quit()
+		GameConfig.quit_app()
 		return
 	var app_id: = Net.steam_app_id()
 	var title: = ""
@@ -233,7 +233,7 @@ static func show_block(host: Node, result: Dictionary) -> void :
 	var quit: = Button.new()
 	quit.text = "quit"
 	UiStyle.style_button(quit, "primary", 16)
-	quit.pressed.connect( func(): host.get_tree().quit())
+	quit.pressed.connect( func(): GameConfig.quit_app())
 	row.add_child(quit)
 	quit.grab_focus()
 	var shot: = _arg_after("--gate-shot")

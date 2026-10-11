@@ -261,6 +261,7 @@ var _replay_exiting: = false
 var _replay_wait: = 0.0
 var _skip_votes: = {}
 var _voted_skip: = false
+var _tap_skip: = false
 var _replay_saved: = false
 
 
@@ -1093,6 +1094,19 @@ func _unhandled_input(event: InputEvent) -> void :
 
 
 	_input_collector.feed_motion(event)
+
+
+	# The replay skip is the accept key, which a phone does not have, so during a
+	# replay a tap stands in for it. A touch device delivers both events (Godot
+	# emulates the mouse button from the touch), and nothing else in this game
+	# reads a tap while a replay is playing, so either one can set the flag.
+	if _phase == Phase.REPLAY and not hud.pause_is_open():
+		if event is InputEventScreenTouch and (event as InputEventScreenTouch).pressed:
+			_tap_skip = true
+		elif event is InputEventMouseButton\
+		and (event as InputEventMouseButton).button_index == MOUSE_BUTTON_LEFT\
+		and (event as InputEventMouseButton).pressed:
+			_tap_skip = true
 
 
 
@@ -4147,6 +4161,10 @@ func _present_match_over(winner_side: int) -> void :
 
 	_match_winner = winner_side
 	_match_over = true
+	# The player is about to sit through the podium, so start pulling the menu
+	# scene in now: leaving the match then swaps from memory instead of loading a
+	# whole menu under the yellow slab.
+	GameConfig.preload_scene("res://game/ui/menu.tscn")
 
 func _leave_to_lobby() -> void :
 
@@ -4668,14 +4686,16 @@ func _present_replay(delta: float) -> void :
 	ball.show_landing_ring = false
 
 func _poll_skip_vote() -> void :
-
-
+	# Read and clear first: a tap that lands outside a replay must not be kept
+	# around and spent on the next one.
+	var tapped: = _tap_skip
+	_tap_skip = false
 
 	if _phase != Phase.REPLAY or _voted_skip or _spectating:
 		return
 	if hud.chat_typing():
 		return
-	if not Input.is_action_just_pressed("ui_accept"):
+	if not tapped and not Input.is_action_just_pressed("ui_accept"):
 		return
 	_voted_skip = true
 	if _net_role == NetRole.CLIENT:
