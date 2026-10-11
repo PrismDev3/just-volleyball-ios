@@ -89,6 +89,9 @@ Details that matter on a phone:
 - Auto-detection: on by default on anything with a touchscreen or on a mobile
   platform. Override in **Settings -> Gameplay -> Touch controls**
   (Auto / On / Off), or with `--touch` / `--no-touch` on the command line.
+- The desktop GPU/driver notice is skipped on mobile: it exists to suggest
+  `--rendering-driver` flags and driver downloads, and a phone has neither. The
+  boot chain goes straight to the intro.
 
 ## How the build works
 
@@ -112,6 +115,38 @@ older Xcode stops at the link step):
 
 The first step asserts the runner really has an iOS 26+ SDK, so a future runner
 change fails with that message instead of a wall of undefined symbols.
+
+### Two traps that must not come back
+
+The first release built by this pipeline installed and booted, but it had **no
+textures, no fonts, and a capsule-shaped player**. Both causes are silent:
+
+- **A file that needs an external tool aborts the whole import.** Godot imports
+  some formats through another program - a `.blend` needs Blender, an `.fbx`
+  needs FBX2glTF. That cannot be configured in headless mode, so
+  `EditorFileSystemImportFormatSupportQueryBlend::query()` returns `true`
+  unconditionally, `_update_scan_actions()` returns before `reimport_files()` is
+  ever called, and **nothing** gets imported. The exporter still writes every
+  `.import` destination path into the pack, so each one lands as a zero-byte
+  entry and the export step reports success.
+- **Those sources were unusable anyway.** The game's models were `.blend` files,
+  and the recovered ones are 625-byte empty Blender documents (the geometry was
+  not in the shipped build); three trees were `.fbx`. All 35 are now the
+  original `.glb` sources kept in `.assets/`, which the built-in glTF importer
+  handles with no external tool. The `.glb` and `.blend` versions were verified
+  to be identical: same node tree, 41 animations, 12 meshes, 26 bones and 15
+  materials for the player character.
+
+The build now refuses to continue when an external tool is requested or when the
+import produced fewer than 1000 payloads, and `tools/audit_pck.py` reads the
+pack's own directory to fail on any empty payload or missing asset category. It
+runs twice: on the exported pack, and again on the pack inside the packaged
+`.ipa` - a path string appearing in the directory proves nothing about its
+contents.
+
+Audio is imported as QOA (`compress/mode=2`) instead of raw PCM. The music and
+ambience are 307 MiB of WAV on disk and PCM would have put all of it into the
+pack, which is what made the first release slow to start on a phone.
 
 Notes about the preset (`export_presets.cfg`, preset `iOS`):
 

@@ -108,6 +108,24 @@ jobs:
           grep -cE "ERROR:" "$RUNNER_TEMP/import.log" || true
           tail -20 "$RUNNER_TEMP/import.log"
 
+          # A project file that needs an external tool cannot be imported in
+          # headless mode, and Godot reacts by aborting the WHOLE scan: nothing
+          # is imported, every payload is written to the pack as zero bytes, and
+          # the game ships without textures, fonts or models. Name the culprit
+          # (a .blend needs Blender, a .fbx needs FBX2glTF) and stop.
+          if grep -qE "Cannot configure blender path|Could not create child process" "$RUNNER_TEMP/import.log"; then
+            echo "::error::the import wants an external tool, so assets would ship empty"
+            grep -nE -B2 "Cannot configure blender path|Could not create child process" "$RUNNER_TEMP/import.log" | head -20
+            exit 1
+          fi
+          IMPORTED=$(find "$GITHUB_WORKSPACE/.godot/imported" -type f | wc -l | tr -d ' ')
+          EMPTY=$(find "$GITHUB_WORKSPACE/.godot/imported" -type f -size 0 | wc -l | tr -d ' ')
+          echo "imported payloads: $IMPORTED (empty: $EMPTY)"
+          if [ "$IMPORTED" -lt 1000 ] || [ "$EMPTY" -ne 0 ]; then
+            echo "::error::import produced $IMPORTED payloads with $EMPTY empty - refusing to export"
+            exit 1
+          fi
+
       - name: Export Xcode project
         run: |
           set -euo pipefail
@@ -131,6 +149,9 @@ jobs:
           ls -l build
           test -f build/volleyball.pck
           test -d build/volleyball.xcodeproj
+
+          # Every imported resource has to carry real bytes in the pack.
+          python3 tools/audit_pck.py build/volleyball.pck --label "exported pack"
 
       - name: Build app (no code signing)
         run: |
@@ -203,9 +224,11 @@ jobs:
           SIZE=$(stat -f%z "$APP/volleyball.pck")
           echo "pck: $((SIZE / 1024 / 1024)) MiB"
           [ "$SIZE" -gt 41943040 ]
-          grep -a -q "\.godot/imported/jvlogo_HD" "$APP/volleyball.pck"
+          # Audit the pack that actually ships, not just the one in build/: a path
+          # string showing up in the directory proves nothing about its payload.
+          python3 tools/audit_pck.py "$APP/volleyball.pck" --label "pack inside the IPA"
           grep -a -q "game/ui/touch/touch_controls.gd" "$APP/volleyball.pck"
-          echo "packed project: imported textures + on-screen controls present"
+          echo "packed project: textures, models, fonts and on-screen controls all present"
 
           /usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$APP/Info.plist"
           NAME=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleDisplayName' "$APP/Info.plist")
