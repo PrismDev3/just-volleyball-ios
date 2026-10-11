@@ -8,8 +8,10 @@ path="res://.godot/imported/toy_rake.obj-fb6fde1faa8908d2d91f6140f6fd14bd.mesh"
 
 [deps]
 
+files=["res://.godot/imported/toy_rake.obj-fb6fde1faa8908d2d91f6140f6fd14bd.mesh"]
+
 source_file="res://game/assets/cartoon_beach_prop_pack/models/toy_rake.obj"
-dest_files=["res://.godot/imported/toy_rake.obj-fb6fde1faa8908d2d91f6140f6fd14bd.mesh"]
+dest_files=["res://.godot/imported/toy_rake.obj-fb6fde1faa8908d2d91f6140f6fd14bd.mesh", "res://.godot/imported/toy_rake.obj-fb6fde1faa8908d2d91f6140f6fd14bd.mesh"]
 
 [params]
 

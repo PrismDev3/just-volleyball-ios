@@ -50,9 +50,9 @@ static func hair_style_from_file(file_name: String) -> String:
 		if base.ends_with(wrapper):
 			base = base.trim_suffix(wrapper)
 			break
-	if not base.ends_with(".blend"):
+	if not base.ends_with(".glb"):
 		return ""
-	return base.trim_suffix(".blend")
+	return base.trim_suffix(".glb")
 
 static func hair_meshes() -> Array[String]:
 
@@ -306,7 +306,7 @@ static func hair_slot_defaults(style: int) -> Array:
 	var out: Array = []
 	var list: = hair_meshes()
 	if style > 0 and style < list.size():
-		var path: = "%s/%s.blend" % [HAIR_DIR, list[style]]
+		var path: = "%s/%s.glb" % [HAIR_DIR, list[style]]
 		if ResourceLoader.exists(path):
 			var root: Node = (load(path) as PackedScene).instantiate()
 			for g in AccessoryItem.build_groups(root):

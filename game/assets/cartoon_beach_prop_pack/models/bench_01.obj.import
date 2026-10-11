@@ -8,8 +8,10 @@ path="res://.godot/imported/bench_01.obj-bafe21c705756db3ede7bd53b4c3f102.mesh"
 
 [deps]
 
+files=["res://.godot/imported/bench_01.obj-bafe21c705756db3ede7bd53b4c3f102.mesh"]
+
 source_file="res://game/assets/cartoon_beach_prop_pack/models/bench_01.obj"
-dest_files=["res://.godot/imported/bench_01.obj-bafe21c705756db3ede7bd53b4c3f102.mesh"]
+dest_files=["res://.godot/imported/bench_01.obj-bafe21c705756db3ede7bd53b4c3f102.mesh", "res://.godot/imported/bench_01.obj-bafe21c705756db3ede7bd53b4c3f102.mesh"]
 
 [params]
 

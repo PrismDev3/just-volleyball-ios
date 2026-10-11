@@ -8,8 +8,10 @@ path="res://.godot/imported/float_02.obj-c2381d0a5810ced6280d6cd65ee6f97e.mesh"
 
 [deps]
 
+files=["res://.godot/imported/float_02.obj-c2381d0a5810ced6280d6cd65ee6f97e.mesh"]
+
 source_file="res://game/assets/cartoon_beach_prop_pack/models/float_02.obj"
-dest_files=["res://.godot/imported/float_02.obj-c2381d0a5810ced6280d6cd65ee6f97e.mesh"]
+dest_files=["res://.godot/imported/float_02.obj-c2381d0a5810ced6280d6cd65ee6f97e.mesh", "res://.godot/imported/float_02.obj-c2381d0a5810ced6280d6cd65ee6f97e.mesh"]
 
 [params]
 

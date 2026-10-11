@@ -8,8 +8,10 @@ path="res://.godot/imported/small_table.obj-9e7b14bbe21e9c375b6e0393a182870f.mes
 
 [deps]
 
+files=["res://.godot/imported/small_table.obj-9e7b14bbe21e9c375b6e0393a182870f.mesh"]
+
 source_file="res://game/assets/cartoon_beach_prop_pack/models/small_table.obj"
-dest_files=["res://.godot/imported/small_table.obj-9e7b14bbe21e9c375b6e0393a182870f.mesh"]
+dest_files=["res://.godot/imported/small_table.obj-9e7b14bbe21e9c375b6e0393a182870f.mesh", "res://.godot/imported/small_table.obj-9e7b14bbe21e9c375b6e0393a182870f.mesh"]
 
 [params]
 

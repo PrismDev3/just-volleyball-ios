@@ -8,8 +8,10 @@ path="res://.godot/imported/toy_bucket.obj-f38cd2cfbf98b0462c8102e771591065.mesh
 
 [deps]
 
+files=["res://.godot/imported/toy_bucket.obj-f38cd2cfbf98b0462c8102e771591065.mesh"]
+
 source_file="res://game/assets/cartoon_beach_prop_pack/models/toy_bucket.obj"
-dest_files=["res://.godot/imported/toy_bucket.obj-f38cd2cfbf98b0462c8102e771591065.mesh"]
+dest_files=["res://.godot/imported/toy_bucket.obj-f38cd2cfbf98b0462c8102e771591065.mesh", "res://.godot/imported/toy_bucket.obj-f38cd2cfbf98b0462c8102e771591065.mesh"]
 
 [params]
 

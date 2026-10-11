@@ -8,8 +8,10 @@ path="res://.godot/imported/chair_03.obj-dcb7f7ea9711658ef4f41366c2164cda.mesh"
 
 [deps]
 
+files=["res://.godot/imported/chair_03.obj-dcb7f7ea9711658ef4f41366c2164cda.mesh"]
+
 source_file="res://game/assets/cartoon_beach_prop_pack/models/chair_03.obj"
-dest_files=["res://.godot/imported/chair_03.obj-dcb7f7ea9711658ef4f41366c2164cda.mesh"]
+dest_files=["res://.godot/imported/chair_03.obj-dcb7f7ea9711658ef4f41366c2164cda.mesh", "res://.godot/imported/chair_03.obj-dcb7f7ea9711658ef4f41366c2164cda.mesh"]
 
 [params]
 

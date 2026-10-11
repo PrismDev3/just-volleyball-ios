@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="AccessoryItem" load_steps=3 format=3 uid="uid://c21aja1w4dj0w"]
 
-[ext_resource type="PackedScene" uid="uid://bvb6o0pgtlby8" path="res://game/character/accessories/sleekvisor.blend" id="1"]
+[ext_resource type="PackedScene" path="res://game/character/accessories/sleekvisor.glb" id="1"]
 [ext_resource type="Script" uid="uid://c1rhe1l732pov" path="res://game/character/accessory_item.gd" id="2"]
 
 [resource]

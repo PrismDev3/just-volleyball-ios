@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dffkc0rp72f0n"]
 
 [ext_resource type="Script" uid="uid://c82t6i8g2h8si" path="res://game/stage/kits/nationals_venue.gd" id="1"]
-[ext_resource type="PackedScene" uid="uid://c6sw04rih5oqf" path="res://game/stages/nationals/nationals_arena.blend" id="2"]
+[ext_resource type="PackedScene" path="res://game/stages/nationals/nationals_arena.glb" id="2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ai477"]
 shading_mode = 0

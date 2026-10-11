@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dqrky7r51op0q"]
 
-[ext_resource type="PackedScene" uid="uid://cchas535gpuf1" path="res://game/assets/palmtree/palmtree3.fbx" id="1"]
+[ext_resource type="PackedScene" uid="uid://cchas535gpuf1" path="res://game/assets/palmtree/palmtree3.glb" id="1"]
 [ext_resource type="Texture2D" uid="uid://c0dk4ttyvcby5" path="res://game/assets/palmtree/palm+tree+bark.pngd05dea93-cad6-4542-b096-23f081f9dc24Large.jpg" id="2"]
 [ext_resource type="Material" uid="uid://c8rrie5gq47fy" path="res://game/assets/palmtree/palmtree_mat.tres" id="3"]
 

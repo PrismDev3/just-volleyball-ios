@@ -21,9 +21,9 @@ const DRIVER_URLS: = {
 var _dont_show: CheckBox = null
 
 func _ready() -> void :
-
-
-	if GameConfig.gpu_notice_dismissed:
+	# Desktop troubleshooting screen: it talks about graphics drivers and launch
+	# flags. A phone has neither to offer, so boot straight past it there.
+	if GameConfig.gpu_notice_dismissed or OS.has_feature("mobile"):
 		GameConfig.goto_scene(NEXT_SCENE)
 		return
 	_build()

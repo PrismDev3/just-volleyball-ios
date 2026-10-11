@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://b2yb17cy4ab17"]
 
-[ext_resource type="PackedScene" uid="uid://b1bqrwvrfiu1l" path="res://game/stage/school/gymv1.blend" id="1"]
+[ext_resource type="PackedScene" path="res://game/stage/school/gymv1.glb" id="1"]
 [ext_resource type="Script" uid="uid://bvv6nutt6wjly" path="res://game/stage/kits/painted_preview.gd" id="2"]
 [ext_resource type="PackedScene" path="res://game/court/floor_gleam.tscn" id="3"]
 

@@ -8,8 +8,10 @@ path="res://.godot/imported/toy_shovel.obj-efda9eb4cee3fb94f310ea8f7cf08cb1.mesh
 
 [deps]
 
+files=["res://.godot/imported/toy_shovel.obj-efda9eb4cee3fb94f310ea8f7cf08cb1.mesh"]
+
 source_file="res://game/assets/cartoon_beach_prop_pack/models/toy_shovel.obj"
-dest_files=["res://.godot/imported/toy_shovel.obj-efda9eb4cee3fb94f310ea8f7cf08cb1.mesh"]
+dest_files=["res://.godot/imported/toy_shovel.obj-efda9eb4cee3fb94f310ea8f7cf08cb1.mesh", "res://.godot/imported/toy_shovel.obj-efda9eb4cee3fb94f310ea8f7cf08cb1.mesh"]
 
 [params]
 

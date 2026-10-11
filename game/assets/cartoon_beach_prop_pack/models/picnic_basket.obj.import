@@ -8,8 +8,10 @@ path="res://.godot/imported/picnic_basket.obj-5d3cbeaa02bbb1dcc8d25b1b66b35397.m
 
 [deps]
 
+files=["res://.godot/imported/picnic_basket.obj-5d3cbeaa02bbb1dcc8d25b1b66b35397.mesh"]
+
 source_file="res://game/assets/cartoon_beach_prop_pack/models/picnic_basket.obj"
-dest_files=["res://.godot/imported/picnic_basket.obj-5d3cbeaa02bbb1dcc8d25b1b66b35397.mesh"]
+dest_files=["res://.godot/imported/picnic_basket.obj-5d3cbeaa02bbb1dcc8d25b1b66b35397.mesh", "res://.godot/imported/picnic_basket.obj-5d3cbeaa02bbb1dcc8d25b1b66b35397.mesh"]
 
 [params]
 

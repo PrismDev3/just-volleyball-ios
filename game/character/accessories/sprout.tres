@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="AccessoryItem" load_steps=3 format=3 uid="uid://bck13dvifwkkj"]
 
-[ext_resource type="PackedScene" uid="uid://3s11syxdd74a" path="res://game/character/accessories/sprout.blend" id="1"]
+[ext_resource type="PackedScene" path="res://game/character/accessories/sprout.glb" id="1"]
 [ext_resource type="Script" uid="uid://c1rhe1l732pov" path="res://game/character/accessory_item.gd" id="2"]
 
 [resource]

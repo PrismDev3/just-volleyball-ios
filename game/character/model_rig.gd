@@ -15,7 +15,7 @@ extends Node3D
 
 
 const MODEL_PATHS: = [
-	"res://game/character/models/player_char.blend", 
+	"res://game/character/models/player_char.glb", 
 	"res://game/character/models/player.glb", 
 ]
 const TOON: = preload("res://game/fx/toon.gdshader")
@@ -39,7 +39,7 @@ const TARGET_HEIGHT: = 1.8
 const HEIGHT_RANGE: = 0.06
 const BLUSH_COLOR: = Color(0.96, 0.52, 0.52, 1.0)
 const NUMBER_FONT: = "res://game/fonts/VarsityTeam-Bold.otf"
-const HAIR_DIR: = "res://game/character/hair/%s.blend"
+const HAIR_DIR: = "res://game/character/hair/%s.glb"
 
 
 

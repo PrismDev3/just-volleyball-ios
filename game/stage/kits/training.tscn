@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" uid="uid://bosgy67hbnvx7" path="res://game/stage/kits/training_venue.gd" id="1"]
-[ext_resource type="PackedScene" uid="uid://b1bqrwvrfiu1l" path="res://game/stage/school/gymv1.blend" id="2"]
+[ext_resource type="PackedScene" path="res://game/stage/school/gymv1.glb" id="2"]
 [ext_resource type="Material" path="res://game/court/training_gleam_mat.tres" id="3"]
 
 [sub_resource type="QuadMesh" id="quad_gleam"]

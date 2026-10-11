@@ -8,8 +8,10 @@ path="res://.godot/imported/toy_wagon.obj-e9a00b4b464c5213a425a58dbc38dd39.mesh"
 
 [deps]
 
+files=["res://.godot/imported/toy_wagon.obj-e9a00b4b464c5213a425a58dbc38dd39.mesh"]
+
 source_file="res://game/assets/cartoon_beach_prop_pack/models/toy_wagon.obj"
-dest_files=["res://.godot/imported/toy_wagon.obj-e9a00b4b464c5213a425a58dbc38dd39.mesh"]
+dest_files=["res://.godot/imported/toy_wagon.obj-e9a00b4b464c5213a425a58dbc38dd39.mesh", "res://.godot/imported/toy_wagon.obj-e9a00b4b464c5213a425a58dbc38dd39.mesh"]
 
 [params]
 

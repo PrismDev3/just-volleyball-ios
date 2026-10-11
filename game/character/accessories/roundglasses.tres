@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="AccessoryItem" load_steps=3 format=3 uid="uid://dqprp8jeusidg"]
 
-[ext_resource type="PackedScene" uid="uid://djk5ftmlyggsw" path="res://game/character/accessories/roundglasses.blend" id="1"]
+[ext_resource type="PackedScene" path="res://game/character/accessories/roundglasses.glb" id="1"]
 [ext_resource type="Script" uid="uid://c1rhe1l732pov" path="res://game/character/accessory_item.gd" id="2"]
 
 [resource]

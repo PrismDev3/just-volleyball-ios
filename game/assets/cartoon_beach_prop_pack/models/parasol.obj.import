@@ -8,8 +8,10 @@ path="res://.godot/imported/parasol.obj-92cea45d38f04d3310a54ca44c34b952.mesh"
 
 [deps]
 
+files=["res://.godot/imported/parasol.obj-92cea45d38f04d3310a54ca44c34b952.mesh"]
+
 source_file="res://game/assets/cartoon_beach_prop_pack/models/parasol.obj"
-dest_files=["res://.godot/imported/parasol.obj-92cea45d38f04d3310a54ca44c34b952.mesh"]
+dest_files=["res://.godot/imported/parasol.obj-92cea45d38f04d3310a54ca44c34b952.mesh", "res://.godot/imported/parasol.obj-92cea45d38f04d3310a54ca44c34b952.mesh"]
 
 [params]
 

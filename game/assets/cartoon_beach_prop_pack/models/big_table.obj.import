@@ -8,8 +8,10 @@ path="res://.godot/imported/big_table.obj-bff122e9fedcf80049932693848729df.mesh"
 
 [deps]
 
+files=["res://.godot/imported/big_table.obj-bff122e9fedcf80049932693848729df.mesh"]
+
 source_file="res://game/assets/cartoon_beach_prop_pack/models/big_table.obj"
-dest_files=["res://.godot/imported/big_table.obj-bff122e9fedcf80049932693848729df.mesh"]
+dest_files=["res://.godot/imported/big_table.obj-bff122e9fedcf80049932693848729df.mesh", "res://.godot/imported/big_table.obj-bff122e9fedcf80049932693848729df.mesh"]
 
 [params]
 

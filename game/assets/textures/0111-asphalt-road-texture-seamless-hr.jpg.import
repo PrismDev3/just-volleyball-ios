@@ -4,6 +4,7 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dd4l1wht3bo86"
 path.s3tc="res://.godot/imported/0111-asphalt-road-texture-seamless-hr.jpg-f60d1f17eed79aac1a336e8323d38c2b.s3tc.ctex"
+path.etc2="res://.godot/imported/0111-asphalt-road-texture-seamless-hr.jpg-f60d1f17eed79aac1a336e8323d38c2b.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,7 +13,7 @@ metadata={
 [deps]
 
 source_file="res://game/assets/textures/0111-asphalt-road-texture-seamless-hr.jpg"
-dest_files=["res://.godot/imported/0111-asphalt-road-texture-seamless-hr.jpg-f60d1f17eed79aac1a336e8323d38c2b.s3tc.ctex"]
+dest_files=["res://.godot/imported/0111-asphalt-road-texture-seamless-hr.jpg-f60d1f17eed79aac1a336e8323d38c2b.s3tc.ctex", "res://.godot/imported/0111-asphalt-road-texture-seamless-hr.jpg-f60d1f17eed79aac1a336e8323d38c2b.etc2.ctex"]
 
 [params]
 
@@ -28,6 +29,10 @@ mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
+process/channel_remap/red=0
+process/channel_remap/green=1
+process/channel_remap/blue=2
+process/channel_remap/alpha=3
 process/fix_alpha_border=false
 process/premult_alpha=false
 process/normal_map_invert_y=false

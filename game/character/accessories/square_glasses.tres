@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="AccessoryItem" load_steps=3 format=3 uid="uid://c5pjwltq4o2kd"]
 
-[ext_resource type="PackedScene" uid="uid://bc8c8gacn6dxi" path="res://game/character/accessories/square_glasses.blend" id="1"]
+[ext_resource type="PackedScene" path="res://game/character/accessories/square_glasses.glb" id="1"]
 [ext_resource type="Script" uid="uid://c1rhe1l732pov" path="res://game/character/accessory_item.gd" id="2"]
 
 [resource]

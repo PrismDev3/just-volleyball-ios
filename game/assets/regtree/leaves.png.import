@@ -4,6 +4,7 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://00hr4eysw2ny"
 path.s3tc="res://.godot/imported/leaves.png-a2f288f6c2374d7e6533a5ac64c6a6c4.s3tc.ctex"
+path.etc2="res://.godot/imported/leaves.png-a2f288f6c2374d7e6533a5ac64c6a6c4.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,7 +13,7 @@ metadata={
 [deps]
 
 source_file="res://game/assets/regtree/leaves.png"
-dest_files=["res://.godot/imported/leaves.png-a2f288f6c2374d7e6533a5ac64c6a6c4.s3tc.ctex"]
+dest_files=["res://.godot/imported/leaves.png-a2f288f6c2374d7e6533a5ac64c6a6c4.s3tc.ctex", "res://.godot/imported/leaves.png-a2f288f6c2374d7e6533a5ac64c6a6c4.etc2.ctex"]
 
 [params]
 
@@ -28,6 +29,10 @@ mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
+process/channel_remap/red=0
+process/channel_remap/green=1
+process/channel_remap/blue=2
+process/channel_remap/alpha=3
 process/fix_alpha_border=false
 process/premult_alpha=false
 process/normal_map_invert_y=false
